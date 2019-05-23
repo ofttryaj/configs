@@ -1,5 +1,5 @@
 " Fish doesn't play all that well with others
-set shell=/bin/zsh
+set shell=/bin/bash
 let mapleader = ","
 language en_US
 
@@ -26,13 +26,16 @@ Plug 'airblade/vim-rooter'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
-" Completion
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
 
+" Completion
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 call plug#end()
+
+" Base16
+let base16colorspace=256
+let g:base16_shell_path="~/.config/base16-shell/scripts/"
 
 if !has('gui_running')
   set t_Co=256
@@ -104,6 +107,7 @@ let g:localvimrc_ask = 0
 " racer + rust
 " https://github.com/rust-lang/rust.vim/issues/192
 let g:rustfmt_command = "rustfmt"
+let g:rust_clip_command = 'pbcopy'
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
@@ -168,7 +172,8 @@ let g:go_play_open_browser = 0
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-" let g:go_def_mode = "guru"
+let g:go_def_mode = ""
+let g:go_info_mode = ""
 " let g:go_metalinter_enabled = 1
 " let g:go_metalinter_command = "gometalinter"
 " beautify it
@@ -283,9 +288,8 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 
 " Colors
 set background=dark
-" colorscheme base16-atelier-dune
-" colorscheme base16-oceanicnext
 colorscheme base16-atelier-estuary
+" colorscheme base16-gruvbox-dark-hard 
 highlight clear SignColumn
 hi Normal ctermbg=NONE
 highlight LineNr guibg=NONE
