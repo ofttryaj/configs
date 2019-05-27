@@ -1,4 +1,14 @@
-set PATH /Users/wlfg/.cargo/bin /Users/wlfg/go/bin $PATH
+# append cargo bin and go bin to path
+set -U fish_user_paths /Users/wlfg/.cargo/bin /Users/wlfg/go/bin
+set LANG zh_CN.UTF-8
+
+# Base16 Shell
+# if status --is-interactive
+#     set BASE16_SHELL "$HOME/.config/base16-shell/"
+#     source "$BASE16_SHELL/profile_helper.fish"
+# 
+# 	# tmux ^ /dev/null; and exec true
+# end
 
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
