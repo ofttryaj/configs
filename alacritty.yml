@@ -49,7 +49,7 @@ window:
   # Values for `decorations` (macOS only):
   #     - transparent: Title bar, transparent background and title bar buttons
   #     - buttonless: Title bar, transparent background, but no title bar buttons
-  decorations: transparent
+  decorations: full
 
   # Startup Mode (changes require restart)
   #
@@ -60,12 +60,12 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: SimpleFullscreen
+  startup_mode: Windowed
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  history: 0
+  history: 10000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
@@ -78,7 +78,7 @@ scrolling:
   # to allow mouse scrolling for applications like `man`.
   #
   # Specifying `0` will disable faux scrolling.
-  faux_multiplier: 0
+  faux_multiplier: 3
 
   # Scroll to the bottom when new text is written to the terminal.
   auto_scroll: false
@@ -161,57 +161,75 @@ font:
   # effect.
   use_thin_strokes: true
 
-# Display the time it takes to redraw each frame.
-render_timer: false
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
 
-# Keep the log file after quitting Alacritty.
-persistent_logging: false
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+
+  # Log level
+  #
+  # Values for `log_level`:
+  #   - None
+  #   - Error
+  #   - Warn
+  #   - Info
+  #   - Debug
+  #   - Trace
+  log_level: Warn
+
+  # Print all received window events.
+  print_events: false
+
+  # Record all characters and escape sequences as test data.
+  ref_test: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 
-# Base16 Atelier Estuary 256 - alacritty color config
-# Bram de Haan (http://atelierbramdehaan.nl)
+# Base16 Gruvbox dark, hard 256 - alacritty color config
+# Dawid Kurek (dawikur@gmail.com), morhetz (https://github.com/morhetz/gruvbox)
 colors:
   # Default colors
   primary:
-    background: '0x22221b'
+    background: '0x1d2021'
     foreground: '0x929181'
 
   # Colors the cursor will use if `custom_cursor_colors` is true
   cursor:
-    text: '0x22221b'
+    text: '0x1d2021'
     cursor: '0x929181'
 
   # Normal colors
   normal:
-    black:   '0x22221b'
+    black:   '0x1d2021'
     red:     '0xba6236'
-    green:   '0x7d9726'
-    yellow:  '0xa5980d'
-    blue:    '0x36a166'
-    magenta: '0x5f9182'
+    green:   '0xb8bb26'
+    yellow:  '0xd3ae57'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
     cyan:    '0x5b9d48'
     white:   '0x929181'
 
   # Bright colors
   bright:
-    black:   '0x6c6b5a'
+    black:   '0x665c54'
     red:     '0xba6236'
-    green:   '0x7d9726'
-    yellow:  '0xa5980d'
-    blue:    '0x36a166'
-    magenta: '0x5f9182'
+    green:   '0xb8bb26'
+    yellow:  '0xd3ae57'
+    blue:    '0x83a598'
+    magenta: '0xd3869b'
     cyan:    '0x5b9d48'
-    white:   '0xf4f3ec'
+    white:   '0xfbf1c7'
 
   indexed_colors:
-    - { index: 16, color: '0xae7313' }
-    - { index: 17, color: '0x9d6c7c' }
-    - { index: 18, color: '0x302f27' }
-    - { index: 19, color: '0x5f5e4e' }
-    - { index: 20, color: '0x878573' }
-    - { index: 21, color: '0xe7e6df' }
+    - { index: 16, color: '0xfe8019' }
+    - { index: 17, color: '0xd65d0e' }
+    - { index: 18, color: '0x3c3836' }
+    - { index: 19, color: '0x504945' }
+    - { index: 20, color: '0xbdae93' }
+    - { index: 21, color: '0xebdbb2' }
 
 # Visual Bell
 #
