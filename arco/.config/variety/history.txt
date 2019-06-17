@@ -1,0 +1,4 @@
+0
+/home/wg/.config/variety/Downloaded/Desktoppr/2009-12-25_12.36.38.jpg
+/usr/share/backgrounds/arcolinux/sunset-over-matterhorn-3840x2560.jpg
+/usr/share/backgrounds/gnome/adwaita-timed.xml
