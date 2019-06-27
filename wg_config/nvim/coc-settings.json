@@ -1,0 +1,21 @@
+{
+    "diagnostic.errorSign": "✖'",
+    "diagnostic.virtualText": true,
+	"coc.preferences.extensionUpdateCheck": "weekly",
+	"languageserver": {
+		"golang": {
+		  "command": "gopls",
+		  "args": [],
+		  "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+		  "filetypes": ["go"]
+		},
+		"intelephense": {
+            "command": "intelephense",
+            "args": ["--stdio"],
+            "filetypes": ["php"],
+            "initializationOptions": {
+                "storagePath": "/tmp/intelephense"
+            }
+        }
+	}
+}
