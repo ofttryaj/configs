@@ -1,5 +1,5 @@
 {
-    "diagnostic.errorSign": "✖'",
+    "diagnostic.errorSign": "✖",
     "diagnostic.virtualText": true,
 	"coc.preferences.extensionUpdateCheck": "weekly",
 	"languageserver": {
