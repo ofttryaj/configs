@@ -30,7 +30,7 @@ sed -i 's/^#Server/Server/g' /etc/pacman.d/mirrorlist
 4. 安装
 
 ```
-pacstrap /mnt base base-devel
+pacstrap /mnt base base-devel linux linux-firmware
 ```
 
 5. 生成分区表
