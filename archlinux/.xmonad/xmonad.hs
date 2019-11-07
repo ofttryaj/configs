@@ -30,10 +30,10 @@ data PiP a = PiP deriving (Show, Read)
 
 mkpip rect@(Rectangle sx sy sw sh) (master:snd:ws) = [small, (master, rect)]
   where small = (snd, (Rectangle px py pw ph))
-        px = sx + fromIntegral sw - fromIntegral pw - 32
-        py = sy + fromIntegral sh - fromIntegral ph - 32
+	px = sx + fromIntegral sw - fromIntegral pw - 32
+	py = sy + fromIntegral sh - fromIntegral ph - 32
 	pw = sw `div` 4
-	ph = sh `div` 4
+      	ph = sh `div` 4
 mkpip rect (master:ws) = [(master, rect)]
 mkpip rect [] = []
 

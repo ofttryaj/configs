@@ -28,18 +28,40 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'rust-lang/rust.vim'
 Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }
+Plug 'leafgarland/typescript-vim'
 
 " Completion
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 " Base16
 let base16colorspace=256
 let g:base16_shell_path="~/.config/base16-shell/scripts/"
 
+if has('nvim')
+    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+    set inccommand=nosplit
+    noremap <C-q> :confirm qall<CR>
+end
+
 if !has('gui_running')
   set t_Co=256
 endif
+if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
+  " screen does not (yet) support truecolor
+  set termguicolors
+endif
+
+" Colors
+set background=dark
+" colorscheme base16-atelier-estuary
+colorscheme base16-gruvbox-dark-hard 
+" colorscheme gruvbox
+highlight clear SignColumn
+hi Normal ctermbg=NONE
+highlight LineNr guibg=NONE
+highlight CursorLineNr guibg=NONE
+" hi ColorColumn ctermbg=black guibg=black
 
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
@@ -112,6 +134,10 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 
+" Better display for messages
+set cmdheight=2
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
 " Completion
 " tab to select
 " and don't hijack my enter key
@@ -174,10 +200,9 @@ let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_def_mode = ""
 let g:go_info_mode = ""
-" let g:go_metalinter_enabled = 1
-" let g:go_metalinter_command = "gometalinter"
 " beautify it
 let g:go_highlight_types = 1
+let g:go_code_completion_enabled = 0
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
@@ -205,10 +230,6 @@ set noshowmode
 set hidden
 set nowrap
 set nojoinspaces
-if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
-endif
 
 " Settings needed for .lvimrc
 set exrc
@@ -285,17 +306,6 @@ set colorcolumn=100 " and give me a colored column
 set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
-
-" Colors
-set background=dark
-" colorscheme base16-atelier-estuary
-" colorscheme base16-gruvbox-dark-hard 
-colorscheme gruvbox
-highlight clear SignColumn
-hi Normal ctermbg=NONE
-highlight LineNr guibg=NONE
-highlight CursorLineNr guibg=NONE
-" hi ColorColumn ctermbg=black guibg=black
 
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
@@ -410,6 +420,7 @@ autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
 autocmd BufRead *.xlsx.axlsx set filetype=ruby
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/scripts/closetag.vim
