@@ -36,7 +36,7 @@ call plug#end()
 
 " Base16
 let base16colorspace=256
-let g:base16_shell_path="~/.config/base16-shell/scripts/"
+" let g:base16_shell_path="~/.config/base16-shell/scripts/"
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -57,11 +57,6 @@ set background=dark
 " colorscheme base16-atelier-estuary
 colorscheme base16-gruvbox-dark-hard 
 " colorscheme gruvbox
-highlight clear SignColumn
-hi Normal ctermbg=NONE
-highlight LineNr guibg=NONE
-highlight CursorLineNr guibg=NONE
-" hi ColorColumn ctermbg=black guibg=black
 
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
@@ -134,8 +129,6 @@ let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
 
-" Better display for messages
-set cmdheight=2
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 " Completion
@@ -167,6 +160,8 @@ nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 
 " Remap keys for gotos
+nmap <silent> E <Plug>(coc-diagnostic-prev)
+nmap <silent> W <Plug>(coc-diagnostic-next)
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
@@ -198,17 +193,15 @@ let g:go_play_open_browser = 0
 let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
-let g:go_def_mode = ""
-let g:go_info_mode = ""
+let g:go_def_mapping_enabled = 0
+let g:go_code_completion_enabled = 1
 " beautify it
 let g:go_highlight_types = 1
-let g:go_code_completion_enabled = 0
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
-let g:go_def_mapping_enabled = 0
 let g:go_doc_keywordprg_enabled = 0
 let g:go_bin_path = expand("/Users/wlfg/go/bin")
 
@@ -221,7 +214,6 @@ au Filetype go source ~/.config/scripts/spacetab.vim
 " # Editor settings
 " =============================================================================
 filetype plugin indent on
-set signcolumn = "no"
 set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
 set encoding=utf-8
@@ -230,13 +222,16 @@ set noshowmode
 set hidden
 set nowrap
 set nojoinspaces
+set printfont=:h10
+set printencoding=utf-8
+set printoptions=paper:letter
+" Always draw sign column. Prevent buffer moving when adding/deleting sign.
+set signcolumn=yes
 
 " Settings needed for .lvimrc
 set exrc
 set secure
-
 set tags=.git/tags
-
 set autowrite
 
 " Sane splits
