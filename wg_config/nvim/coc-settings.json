@@ -1,13 +1,23 @@
 {
+    "suggest.enablePreselect": false,
     "diagnostic.errorSign": "✖",
-    "diagnostic.virtualText": true,
+    "diagnostic.refreshOnInsertMode": true,
+    "diagnostic.messageTarget": "float",
 	"coc.preferences.extensionUpdateCheck": "weekly",
 	"languageserver": {
 		"golang": {
 		  "command": "gopls",
-		  "args": [],
-		  "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
-		  "filetypes": ["go"]
+		  "rootPatterns": ["go.mod"],
+		  "filetypes": ["go"],
+          "settings": {
+              "gopls": {
+                  "deepCompletion":true,
+                  "completeUnimported":true,
+                  "usePlaceholders":false,
+                  "watchFileChanges":true,
+                  "staticcheck": true
+              }
+          }
 		},
 		"intelephense": {
             "command": "intelephense",
