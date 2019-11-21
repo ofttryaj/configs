@@ -8,7 +8,7 @@
 " :colorscheme works in terminals supported by base16-shell scripts
 " User must set this variable in .vimrc
 "   let g:base16_shell_path=base16-builder/output/shell/
-if !has('gui_running')
+if !has("gui_running")
   if exists("g:base16_shell_path")
     execute "silent !/bin/sh ".g:base16_shell_path."/base16-gruvbox-dark-hard.sh"
   endif
@@ -25,39 +25,26 @@ let s:gui03        = "665c54"
 let g:base16_gui03 = "665c54"
 let s:gui04        = "bdae93"
 let g:base16_gui04 = "bdae93"
-" let s:gui05        = "d5c4a1"
-" let g:base16_gui05 = "d5c4a1"
-let s:gui05        = "929181"
-let g:base16_gui05 = "929181"
+let s:gui05        = "d5c4a1"
+let g:base16_gui05 = "d5c4a1"
 let s:gui06        = "ebdbb2"
 let g:base16_gui06 = "ebdbb2"
 let s:gui07        = "fbf1c7"
 let g:base16_gui07 = "fbf1c7"
-" let s:gui08        = "fb4934"
-" let g:base16_gui08 = "fb4934"
-let s:gui08        = "ba6236"
-let g:base16_gui08 = "ba6236"
-" let s:gui09        = "fe8019"
-" let g:base16_gui09 = "fe8019"
-let s:gui09        = "ae7313"
-let g:base16_gui09 = "ae7313"
-" let s:gui0A        = "fabd2f"
-" let g:base16_gui0A = "fabd2f"
-let s:gui0A        = "a5980d"
-let g:base16_gui0A = "a5980d"
-" let s:gui0B        = "b8bb26"
-let s:gui0B        = "7d9726"
-let g:base16_gui0B = "7d9726"
-" let s:gui0C        = "8ec07c"
-" let g:base16_gui0C = "8ec07c"
-let s:gui0C        = "5b9d48"
-let g:base16_gui0C = "5b9d48"
+let s:gui08        = "fb4934"
+let g:base16_gui08 = "fb4934"
+let s:gui09        = "fe8019"
+let g:base16_gui09 = "fe8019"
+let s:gui0A        = "fabd2f"
+let g:base16_gui0A = "fabd2f"
+let s:gui0B        = "b8bb26"
+let g:base16_gui0B = "b8bb26"
+let s:gui0C        = "8ec07c"
+let g:base16_gui0C = "8ec07c"
 let s:gui0D        = "83a598"
 let g:base16_gui0D = "83a598"
 let s:gui0E        = "d3869b"
 let g:base16_gui0E = "d3869b"
-let s:gui0E        = "5f9182"
-let g:base16_gui0E = "5f9182"
 let s:gui0F        = "d65d0e"
 let g:base16_gui0F = "d65d0e"
 
@@ -82,7 +69,7 @@ let s:cterm0D        = "04"
 let g:base16_cterm0D = "04"
 let s:cterm0E        = "05"
 let g:base16_cterm0E = "05"
-if exists('base16colorspace') && base16colorspace == "256"
+if exists("base16colorspace") && base16colorspace == "256"
   let s:cterm01        = "18"
   let g:base16_cterm01 = "18"
   let s:cterm02        = "19"
@@ -113,20 +100,20 @@ endif
 " Neovim terminal colours
 if has("nvim")
   let g:terminal_color_0 =  "#1d2021"
-  let g:terminal_color_1 =  "#ba6236"
-  let g:terminal_color_2 =  "#7d9726"
+  let g:terminal_color_1 =  "#fb4934"
+  let g:terminal_color_2 =  "#b8bb26"
   let g:terminal_color_3 =  "#fabd2f"
   let g:terminal_color_4 =  "#83a598"
   let g:terminal_color_5 =  "#d3869b"
-  let g:terminal_color_6 =  "#5b9d48"
-  let g:terminal_color_7 =  "#929181"
+  let g:terminal_color_6 =  "#8ec07c"
+  let g:terminal_color_7 =  "#d5c4a1"
   let g:terminal_color_8 =  "#665c54"
-  let g:terminal_color_9 =  "#ba6236"
-  let g:terminal_color_10 = "#7d9726"
+  let g:terminal_color_9 =  "#fb4934"
+  let g:terminal_color_10 = "#b8bb26"
   let g:terminal_color_11 = "#fabd2f"
   let g:terminal_color_12 = "#83a598"
   let g:terminal_color_13 = "#d3869b"
-  let g:terminal_color_14 = "#5b9d48"
+  let g:terminal_color_14 = "#8ec07c"
   let g:terminal_color_15 = "#fbf1c7"
   let g:terminal_color_background = g:terminal_color_0
   let g:terminal_color_foreground = g:terminal_color_5
@@ -134,23 +121,23 @@ if has("nvim")
     let g:terminal_color_background = g:terminal_color_7
     let g:terminal_color_foreground = g:terminal_color_2
   endif
-elseif has('terminal')
+elseif has("terminal")
   let g:terminal_ansi_colors = [
         \ "#1d2021",
-        \ "#ba6236",
-        \ "#7d9726",
+        \ "#fb4934",
+        \ "#b8bb26",
         \ "#fabd2f",
         \ "#83a598",
         \ "#d3869b",
-        \ "#5b9d48",
-        \ "#929181",
+        \ "#8ec07c",
+        \ "#d5c4a1",
         \ "#665c54",
-        \ "#ba6236",
-        \ "#7d9726",
+        \ "#fb4934",
+        \ "#b8bb26",
         \ "#fabd2f",
         \ "#83a598",
         \ "#d3869b",
-        \ "#5b9d48",
+        \ "#8ec07c",
         \ "#fbf1c7",
         \ ]
 endif
@@ -163,8 +150,8 @@ let g:colors_name = "base16-gruvbox-dark-hard"
 " Highlighting function
 " Optional variables are attributes and guisp
 function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
-	let a:attr = get(a:, 1, "")
-	let a:guisp = get(a:, 2, "")
+  let l:attr = get(a:, 1, "")
+  let l:guisp = get(a:, 2, "")
 
   if a:guifg != ""
     exec "hi " . a:group . " guifg=#" . a:guifg
@@ -178,11 +165,11 @@ function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
   if a:ctermbg != ""
     exec "hi " . a:group . " ctermbg=" . a:ctermbg
   endif
-  if a:attr != ""
-    exec "hi " . a:group . " gui=" . a:attr . " cterm=" . a:attr
+  if l:attr != ""
+    exec "hi " . a:group . " gui=" . l:attr . " cterm=" . l:attr
   endif
-  if a:guisp != ""
-    exec "hi " . a:group . " guisp=#" . a:guisp
+  if l:guisp != ""
+    exec "hi " . a:group . " guisp=#" . l:guisp
   endif
 endfunction
 

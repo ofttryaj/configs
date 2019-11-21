@@ -1,5 +1,7 @@
 # append cargo bin and go bin to path
-set -U fish_user_paths /Users/wlfg/.cargo/bin /Users/wlfg/go/bin
+set -U fish_user_paths /Users/wlfg/.cargo/bin /Users/wlfg/go/bin /Users/wlfg/.symfony/bin /opt/local/bin /opt/local/sbin
+set -g fish_user_paths "/usr/local/opt/gnu-getopt/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/gettext/bin" $fish_user_paths
 set LANG zh_CN.UTF-8
 
 # Base16 Shell
