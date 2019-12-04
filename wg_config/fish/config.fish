@@ -1,8 +1,18 @@
+abbr -a vim nvim
+abbr -a sshx /usr/bin/ssh zceo@122.14.218.170 -p 30022
+
+set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin
 # append cargo bin and go bin to path
-set -U fish_user_paths /Users/wlfg/.cargo/bin /Users/wlfg/go/bin /Users/wlfg/.symfony/bin /opt/local/bin /opt/local/sbin
-set -g fish_user_paths "/usr/local/opt/gnu-getopt/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/gettext/bin" $fish_user_paths
+set PATH /Users/wlfg/.cargo/bin /Users/wlfg/go/bin /Users/wlfg/.symfony/bin /opt/local/bin /opt/local/sbin $PATH
+set PATH /usr/local/opt/gnu-getopt/bin $PATH 
+set PATH /usr/local/opt/gettext/bin $PATH
 set LANG zh_CN.UTF-8
+set SDKROOT (xcrun --show-sdk-path)
+
+
+if status --is-interactive
+	tmux ^ /dev/null; and exec true
+end
 
 # Base16 Shell
 # if status --is-interactive

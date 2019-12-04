@@ -213,6 +213,8 @@ au Filetype go source ~/.config/scripts/spacetab.vim
 " =============================================================================
 " # Editor settings
 " =============================================================================
+set clipboard+=unnamedplus
+
 filetype plugin indent on
 set autoindent
 set timeoutlen=300 " http://stackoverflow.com/questions/2158516/delay-before-o-opens-a-new-line
