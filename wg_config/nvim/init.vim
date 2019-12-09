@@ -128,6 +128,8 @@ let g:rust_clip_command = 'pbcopy'
 let g:rustfmt_autosave = 1
 let g:rustfmt_emit_files = 1
 let g:rustfmt_fail_silently = 0
+" let g:rustfmt_options = '--edition 2018'
+let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
@@ -213,7 +215,6 @@ au Filetype go source ~/.config/scripts/spacetab.vim
 " =============================================================================
 " # Editor settings
 " =============================================================================
-set clipboard+=unnamedplus
 
 filetype plugin indent on
 set autoindent

@@ -1,11 +1,11 @@
 abbr -a vim nvim
 abbr -a sshx /usr/bin/ssh zceo@122.14.218.170 -p 30022
 
-set -U fish_user_paths /usr/local/sbin /usr/local/bin /usr/bin /bin
+set -U fish_user_paths /Users/wlfg/.cargo/bin /Users/wlfg/go/bin /Users/wlfg/.symfony/bin /opt/local/bin /opt/local/sbin
 # append cargo bin and go bin to path
-set PATH /Users/wlfg/.cargo/bin /Users/wlfg/go/bin /Users/wlfg/.symfony/bin /opt/local/bin /opt/local/sbin $PATH
-set PATH /usr/local/opt/gnu-getopt/bin $PATH 
-set PATH /usr/local/opt/gettext/bin $PATH
+# set PATH /Users/wlfg/.cargo/bin /Users/wlfg/go/bin /Users/wlfg/.symfony/bin /opt/local/bin /opt/local/sbin $PATH
+# set PATH /usr/local/opt/gnu-getopt/bin $PATH 
+# set PATH /usr/local/opt/gettext/bin $PATH
 set LANG zh_CN.UTF-8
 set SDKROOT (xcrun --show-sdk-path)
 
