@@ -33,7 +33,7 @@ mkpip rect@(Rectangle sx sy sw sh) (master:snd:ws) = [small, (master, rect)]
 	px = sx + fromIntegral sw - fromIntegral pw - 32
 	py = sy + fromIntegral sh - fromIntegral ph - 32
 	pw = sw `div` 4
-      	ph = sh `div` 4
+	ph = sh `div` 4
 mkpip rect (master:ws) = [(master, rect)]
 mkpip rect [] = []
 
@@ -48,13 +48,12 @@ myFocusFollowsMouse = False
 myClickJustFocuses = False
 
 myModMask       = mod1Mask -- or mod4Mask for super
-myWorkspaces    = ["web","code","a","b","c","long","mx","sfx"]
+myWorkspaces    = ["web","a","b","c","long","mx","sfx"]
 
 myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((0, xK_Print), (spawn "scrot"))
     , ((mod4Mask, xK_a), (spawn myTerminal))
     , ((mod4Mask, xK_c), (spawn "xterm"))
-    , ((mod4Mask, xK_b), (spawn "firefox"))
     , ((mod4Mask, xK_q), (spawn "/usr/bin/bash -c 'notify-send -i time \"Right now, it is\" \"$(date \"+%-I:%M %p, %A %B %d, %Y\")\n$(acpi | sed \"s/Battery 0://\")\"'"))
     , ((mod4Mask, xK_e), (windows $ W.greedyView "mx") >> spawn "alacritty -t mutt -e tmux new-session -A -s mail /bin/bash -ic \"mutt -e 'source ~/.mutt/account.fm'\"")
     , ((mod4Mask, xK_t), (spawn "xterm -e /bin/bash -i"))
@@ -137,7 +136,6 @@ myManageHook = composeAll
 
 myStartupHook = do
   spawnOnce "$HOME/.config/polybar/launch.sh"
-  -- spawnOnce "/data/jon/cargo-target/release/buzz"
   spawnOnce "kupfer --no-splash"
   spawnOnce "nitrogen --restore"
 
@@ -155,5 +153,5 @@ main = do
         layoutHook         = desktopLayoutModifiers $ noBorders $ myLayout,
         manageHook         = myManageHook <+> manageHook desktopConfig,
         handleEventHook    = fullscreenEventHook <+> handleEventHook desktopConfig,
-	startupHook        = myStartupHook <+> startupHook desktopConfig
+		startupHook        = myStartupHook <+> startupHook desktopConfig
     }
