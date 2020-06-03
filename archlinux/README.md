@@ -140,3 +140,65 @@ aurman -S polybar
 
 ```
 
+#### fdisk
+
+```
+fdisk /dev/sda
+
+d  delete partition
+n  new partition
+
+boot partition
+
+partition type: default primary
+partition number: default 1
+first sector: default
+last sector: +200M
+do you want to remove signature ? Yes
+
+swap partition
+
+partition type: default primary
+partition number: default 2
+first sector: default
+last sector: +15G      15% ? 50%?
+
+root partition
+
+partition type: default primary
+partition number: default 3
+first sector: default
+last sector: +25G
+do you want to remove signature ? Yes
+
+home partition
+
+partition type: p primary
+partition number: default 4
+first sector: default
+last sector: default (whole remain)
+do you want to remove signature ? Yes
+
+w write
+
+a toggle boot partition
+
+mkfs.ext4 /dev/sda1
+mkfs.ext4 /dev/sda3
+mkfs.ext4 /dev/sda4
+mkswap /dev/sda2
+swapon /dev/sda2
+
+
+mount /dev/sda3 /mnt
+
+mkdir /mnt/home
+mkdir /mnt/boot
+
+mount /dev/sda1 /mnt/boot
+mount /dev/sda4 /mnt/home
+
+umount -R /mnt
+
+```
+
