@@ -10,7 +10,7 @@ language en_US
 set nocompatible
 filetype off
 set rtp+=~/.local/share/nvim/site/autoload/plug.vim
-call plug#begin('/Users/wlfg/.local/share/nvim/site/plugged')
+call plug#begin('~/.local/share/nvim/site/plugged')
 
 " Load plugins
 " VIM enhancements
@@ -34,6 +34,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
+let g:python3_host_prog="/usr/local/bin/python3"
 " Base16
 let base16colorspace=256
 " let g:base16_shell_path="~/.config/base16-shell/scripts/"
@@ -83,7 +84,7 @@ let g:secure_modelines_allowed_items = [
 
 " Lightline
 let g:lightline = {
-	\ 'colorscheme': 'jellybeans',
+	\ 'colorscheme': 'wombat',
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste' ],
 	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -96,6 +97,9 @@ let g:lightline = {
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
+
+" Use auocmd to force lightline update.
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('ag')
@@ -205,9 +209,9 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_doc_keywordprg_enabled = 0
-let g:go_bin_path = expand("/Users/wlfg/go/bin")
-
-au Filetype go source ~/.config/scripts/spacetab.vim
+let g:go_template_autocreate = 0
+let g:go_gopls_enabled = 0
+let g:go_bin_path = expand("~/go/bin")
 
 " Don't gofmt Biscuit (yet)
 " autocmd BufRead,BufNewFile go let [g:go_fmt_command, g:go_fmt_autosave]=["", 0]
@@ -254,7 +258,8 @@ set wildignore=.hg,.svn,*~,*.png,*.jpg,*.gif,*.settings,Thumbs.db,*.min.js,*.swp
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-set noexpandtab
+" set noexpandtab
+set expandtab
 
 " Get syntax
 syntax on
@@ -300,7 +305,7 @@ set laststatus=2
 set relativenumber " Relative line numbers
 set number " Also show current absolute line
 set diffopt+=iwhite " No whitespace in vimdiff
-set colorcolumn=100 " and give me a colored column
+set colorcolumn=150 " and give me a colored column
 set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
@@ -427,7 +432,6 @@ endif
 autocmd BufWritePost *.less if filereadable("Makefile") | make | endif
 
 " Follow Rust code style rules
-au Filetype rust source ~/.config/scripts/spacetab.vim
 au Filetype rust set colorcolumn=100
 
 autocmd FileType json syntax match Comment +\/\/.\+$+
@@ -443,6 +447,7 @@ au BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " Script plugins
 autocmd Filetype html,xml,xsl,php source ~/.config/scripts/closetag.vim
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " Put this function at the very end of your vimrc file.
 
