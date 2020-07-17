@@ -18,7 +18,6 @@ Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
 Plug 'justinmk/vim-sneak'
 
-" GUI enhancements
 Plug 'itchyny/lightline.vim'
 
 " Fuzzy finder
@@ -37,7 +36,7 @@ call plug#end()
 let g:python3_host_prog="/usr/local/bin/python3"
 " Base16
 let base16colorspace=256
-" let g:base16_shell_path="~/.config/base16-shell/scripts/"
+let g:base16_shell_path="~/.config/base16-shell/scripts/"
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -55,9 +54,7 @@ endif
 
 " Colors
 set background=dark
-" colorscheme base16-atelier-estuary
 colorscheme base16-gruvbox-dark-hard 
-" colorscheme gruvbox
 
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
@@ -84,7 +81,7 @@ let g:secure_modelines_allowed_items = [
 
 " Lightline
 let g:lightline = {
-	\ 'colorscheme': 'wombat',
+	\ 'colorscheme': 'default',
 	\ 'active': {
 	\   'left': [ [ 'mode', 'paste' ],
 	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
@@ -200,7 +197,7 @@ let g:go_fmt_fail_silently = 1
 let g:go_fmt_command = "goimports"
 let g:go_list_type = "quickfix"
 let g:go_def_mapping_enabled = 0
-let g:go_code_completion_enabled = 1
+let g:go_code_completion_enabled = 0
 " beautify it
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
@@ -211,7 +208,9 @@ let g:go_highlight_extra_types = 1
 let g:go_doc_keywordprg_enabled = 0
 let g:go_template_autocreate = 0
 let g:go_gopls_enabled = 0
-let g:go_bin_path = expand("~/go/bin")
+let g:go_gopls_use_placeholders = ''
+let g:go_diagnostics_enabled = 1
+" let g:go_bin_path = expand("~/go/bin")
 
 " Don't gofmt Biscuit (yet)
 " autocmd BufRead,BufNewFile go let [g:go_fmt_command, g:go_fmt_autosave]=["", 0]

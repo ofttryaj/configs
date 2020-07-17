@@ -1,23 +1,22 @@
 abbr -a vim nvim
 abbr ssh ssh
+alias sshvps="/usr/bin/ssh root@192.119.92.89"
+alias sshkbb="/usr/bin/ssh -p 60022 gang.wang@sh-jms.kuaibaobao.com"
 alias httpgd="godoc -http=:6060"
 
+# set -gx TERM tmux-256color
 set -U fish_user_paths ~/.cargo/bin ~/go/bin ~/.symfony/bin /opt/local/bin /opt/local/sbin ~/.composer/vendor/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set LANG zh_CN.UTF-8
 set SDKROOT (xcrun --show-sdk-path)
 
+# Base16 Shell
 if status --is-interactive
+    set BASE16_SHELL "$HOME/.config/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
+
 	tmux ^ /dev/null; and exec true
 end
-
-# Base16 Shell
-# if status --is-interactive
-#     set BASE16_SHELL "$HOME/.config/base16-shell/"
-#     source "$BASE16_SHELL/profile_helper.fish"
-# 
-# 	# tmux ^ /dev/null; and exec true
-# end
 
 # Fish git prompt
 set __fish_git_prompt_showuntrackedfiles 'yes'
@@ -102,3 +101,4 @@ function fish_greeting
 
 	set_color normal
 end
+set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths

@@ -5,15 +5,18 @@
     "diagnostic.enableMessage": "always",
     "diagnostic.messageTarget": "float",
 	"coc.preferences.extensionUpdateCheck": "weekly",
+    "rust-analyzer.serverPath": "/Users/gang/.cargo/bin/rust-analyzer",
+    "rust-analyzer.inlayHints.refreshOnInsertMode": true,
 	"languageserver": {
 		"golang": {
 		  "command": "gopls",
 		  "rootPatterns": ["go.mod"],
-          "trace.server": "verbose",
 		  "filetypes": ["go"],
+          "disableWorkspaceFolders": true,
           "initializationOptions": {
               "completeUnimported":true,
-              "staticcheck": true
+              "staticcheck": true,
+              "usePlaceholders": false
           }
 		},
 		"intelephense": {
