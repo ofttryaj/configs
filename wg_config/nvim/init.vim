@@ -34,9 +34,6 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 let g:python3_host_prog="/usr/local/bin/python3"
-" Base16
-let base16colorspace=256
-let g:base16_shell_path="~/.config/base16-shell/scripts/"
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -52,9 +49,15 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   set termguicolors
 endif
 
-" Colors
+" Base16
 set background=dark
+let base16colorspace=256
+let g:base16_shell_path="~/.config/base16-shell/scripts/"
+" Colors
 colorscheme base16-gruvbox-dark-hard 
+hi Normal ctermbg=NONE
+" Brighter comments
+call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
 
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
