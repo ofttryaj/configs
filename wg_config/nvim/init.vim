@@ -50,12 +50,13 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
 endif
 
 " Base16
-set background=dark
+set bg=dark
 let base16colorspace=256
 let g:base16_shell_path="~/.config/base16-shell/scripts/"
 " Colors
 colorscheme base16-gruvbox-dark-hard 
-hi Normal ctermbg=NONE
+syntax on
+hi Normal guibg=black ctermbg=NONE
 " Brighter comments
 call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
 
@@ -263,8 +264,6 @@ set tabstop=4
 " set noexpandtab
 set expandtab
 
-" Get syntax
-syntax on
 
 " Wrapping options
 set formatoptions=tc " wrap text and comments using textwidth
