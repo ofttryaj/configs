@@ -8,12 +8,13 @@ alias httpgd="godoc -http=:6060"
 set -U fish_user_paths ~/.cargo/bin ~/go/bin ~/.symfony/bin /opt/local/bin /opt/local/sbin ~/.composer/vendor/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set LANG zh_CN.UTF-8
-set SDKROOT (xcrun --show-sdk-path)
+set SDKROOT (/usr/bin/xcrun --show-sdk-path)
+set JAVA_HOME (/usr/libexec/java_home)
 
 # Base16 Shell
 if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
+    # set BASE16_SHELL "$HOME/.config/base16-shell/"
+    # source "$BASE16_SHELL/profile_helper.fish"
 
 	tmux ^ /dev/null; and exec true
 end
