@@ -7,9 +7,11 @@ alias httpgd="godoc -http=:6060"
 # set -gx TERM tmux-256color
 set -U fish_user_paths ~/.cargo/bin ~/go/bin ~/.symfony/bin /opt/local/bin /opt/local/sbin ~/.composer/vendor/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths ~/dev/soft/protoc3.16/bin $fish_user_paths
+# set -g fish_user_paths "/usr/local/opt/php/bin" $fish_user_paths
+# set -g fish_user_paths "/usr/local/opt/php/sbin" $fish_user_paths
 set LANG zh_CN.UTF-8
 set SDKROOT (/usr/bin/xcrun --show-sdk-path)
-set JAVA_HOME (/usr/libexec/java_home)
 
 # Base16 Shell
 if status --is-interactive

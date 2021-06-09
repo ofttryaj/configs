@@ -16,6 +16,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
+Plug 'machakann/vim-highlightedyank'
 Plug 'justinmk/vim-sneak'
 
 Plug 'itchyny/lightline.vim'
@@ -51,6 +52,8 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   " screen does not (yet) support truecolor
   set termguicolors
 endif
+
+let g:highlightedyank_highlight_duration = 1000
 
 " Base16
 set background=dark
@@ -88,15 +91,15 @@ let g:secure_modelines_allowed_items = [
 
 " Lightline
 let g:lightline = {
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ],
-	\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-	\ },
-	\ 'component_function': {
-	\   'cocstatus': 'coc#status',
-	\	'filename': 'LightlineFilename'
-	\ },
-	\ }
+    \ 'active': {
+    \   'left': [ [ 'mode', 'paste' ],
+    \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+    \ },
+    \ 'component_function': {
+    \   'cocstatus': 'coc#status',
+    \	'filename': 'LightlineFilename'
+    \ },
+    \ }
 function! LightlineFilename()
   return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
@@ -106,11 +109,11 @@ autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('ag')
-	set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\ --nocolor
 endif
 if executable('rg')
-	set grepprg=rg\ --no-heading\ --vimgrep
-	set grepformat=%f:%l:%c:%m
+  set grepprg=rg\ --no-heading\ --vimgrep
+  set grepformat=%f:%l:%c:%m
 endif
 
 " Latex
@@ -147,14 +150,14 @@ set updatetime=300
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 " coc.nvim
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
+    \ pumvisible() ? "\<C-n>" :
+    \ <SID>check_back_space() ? "\<TAB>" :
+    \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+let col = col('.') - 1
+return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> for trigger completion.
@@ -178,11 +181,11 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if &filetype == 'vim'
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+if &filetype == 'vim'
+  execute 'h '.expand('<cword>')
+else
+  call CocAction('doHover')
+endif
 endfunction
 
 " Highlight symbol under cursor on CursorHold
@@ -317,6 +320,31 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 set nolist
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 
+noremap s <nop>
+
+map si :set splitright<CR>:vsplit<CR>
+map sn :set nosplitright<CR>:vsplit<CR>
+map su :set nosplitbelow<CR>:split<CR>
+map se :set splitbelow<CR>:split<CR>
+
+map <LEADER>i <C-w>l
+map <LEADER>u <C-w>k
+map <LEADER>n <C-w>h
+map <LEADER>e <C-w>j
+
+map <leader>r :res +5<CR>
+map <leader>t :res -5<CR>
+map <leader>a :vertical resize-5<CR>
+map <leader>b :vertical resize+5<CR>
+
+map tu :tabe<CR>
+map tn :-tabnext<CR>
+map ti :+tabnext<CR>
+
+map sv <C-w>t<C-w>H
+map sh <C-w>t<C-w>K
+
+
 " =============================================================================
 " # Keyboard shortcuts
 " =============================================================================
@@ -369,8 +397,8 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 noremap <leader>s :Rg
 
 function! s:list_cmd()
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
+let base = fnamemodify(expand('%'), ':h:.:S')
+return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', expand('%'))
 endfunction
 
 " Open new file adjacent to current file
@@ -426,8 +454,8 @@ autocmd InsertLeave * set nopaste
 
 " Jump to last edit position on opening file
 if has("autocmd")
-  " https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
-  au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+" https://stackoverflow.com/questions/31449496/vim-ignore-specifc-file-in-autocommand
+au BufReadPost * if expand('%:p') !~# '\m/\.git/' && line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 endif
 
 " Auto-make less files on save
