@@ -1,6 +1,6 @@
 " Fish doesn't play all that well with others
 set shell=/bin/bash
-let mapleader = " "
+let mapleader = "\<space>"
 language en_US
 
 " =============================================================================
@@ -36,6 +36,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -47,6 +48,7 @@ call plug#end()
 
 " LSP configuration
 lua << END
+vim.lsp.set_log_level('error')
 local lspconfig = require('lspconfig')
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
@@ -76,9 +78,25 @@ local on_attach = function(client, bufnr)
 
   -- Forward to other plugins
   require'completion'.on_attach(client)
+  require('vim.lsp.diagnostic')._define_default_signs_and_highlights()
 end
 
-local servers = { "rust_analyzer", "gopls" }
+lspconfig.gopls.setup {
+    on_attach = on_attach,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+    },
+}
+
+local servers = { "rust_analyzer", "intelephense" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
@@ -92,6 +110,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
     signs = true,
+    underline = true,
     update_in_insert = true,
   }
 )
@@ -128,7 +147,7 @@ set background=dark
 let base16colorspace=256
 let g:base16_shell_path="~/.config/base16-shell/scripts/"
 " Colors
-colorscheme base16-gruvbox-dark-hard 
+colorscheme base16-gruvbox-dark-hard
 syntax on
 hi Normal ctermbg=NONE
 " Brighter comments
@@ -221,9 +240,6 @@ set completeopt=menuone,noinsert,noselect
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
-" Doxygen
-let mysyntaxfile='~/.config/doxygen_load.vim'
-
 " Golang
 let g:go_play_open_browser = 0
 let g:go_fmt_fail_silently = 1
@@ -261,6 +277,7 @@ set noshowmode
 set hidden
 set nowrap
 set nojoinspaces
+let g:sneak#s_next = 1
 set printfont=:h10
 set printencoding=utf-8
 set printoptions=paper:letter
@@ -270,8 +287,6 @@ set signcolumn=yes
 " Settings needed for .lvimrc
 set exrc
 set secure
-set tags=.git/tags
-set autowrite
 
 " Sane splits
 set splitright
@@ -326,7 +341,7 @@ cnoremap %s/ %sm/
 set guioptions-=T " Remove toolbar
 set vb t_vb= " No more beeps
 set backspace=2 " Backspace over newlines
-set foldmethod=marker " Only fold on marks
+set nofoldenable
 set ruler " Where am I?
 set ttyfast
 " https://github.com/vim/vim/issues/1735#issuecomment-383353563
@@ -343,7 +358,6 @@ set shortmess+=c " don't give |ins-completion-menu| messages.
 
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
-set nolist
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 
 noremap s <nop>
@@ -423,7 +437,7 @@ noremap <leader>c :w !xsel -ib<cr><cr>
 noremap <leader>s :Rg
 
 " Open new file adjacent to current file
-nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>o :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " No arrow keys --- force yourself to use the home row
 nnoremap <up> <nop>
