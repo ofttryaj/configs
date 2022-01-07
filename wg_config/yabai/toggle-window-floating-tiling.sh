@@ -40,5 +40,4 @@ if [ $spaceType = '"bsp"' ]; then
       yabai -m window --resize abs:$w:$h
     fi
   fi
-
 fi

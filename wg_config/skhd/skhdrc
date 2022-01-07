@@ -10,6 +10,11 @@ shift + alt - j : yabai -m window --warp south
 shift + alt - k : yabai -m window --warp north
 shift + alt - l : yabai -m window --warp east
 
+alt - 0 : yabai -m space --balance
+
+# rotate tree
+alt - r : yabai -m space --rotate 90
+
 
 # Resize windows
 ctrl + alt - h : \
@@ -39,9 +44,9 @@ shift + ctrl + alt - l : yabai -m window --insert east
 alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
-alt - w : index="$(yabai -m query --spaces --space | jq '.index')" && \
+alt - w : set index (yabai -m query --spaces --space | jq '.index') && \
                 yabai -m space --focus recent && \
-                yabai -m space "${index}" --destroy && \
+                yabai -m space $index --destroy && \
                 spacebar -m config spaces on
 
 # create desktop, move window and follow focus - uses jq for parsing json (brew install jq)
