@@ -44,6 +44,9 @@ shift + ctrl + alt - l : yabai -m window --insert east
 alt - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
+shift + cmd + ctrl + alt - t : yabai -m window --toggle float;\
+          yabai -m window --grid 4:4:1:1:2:2
+
 alt - w : set index (yabai -m query --spaces --space | jq '.index') && \
                 yabai -m space --focus recent && \
                 yabai -m space $index --destroy && \
