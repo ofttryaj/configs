@@ -1,8 +1,8 @@
 # Navigation
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
+hyper - h : yabai -m window --focus west
+hyper - j : yabai -m window --focus south
+hyper - k : yabai -m window --focus north
+hyper - l : yabai -m window --focus east
 
 # Moving windows
 shift + alt - h : yabai -m window --warp west
@@ -40,11 +40,8 @@ shift + ctrl + alt - k : yabai -m window --insert north
 shift + ctrl + alt - l : yabai -m window --insert east
 
 # Float / Unfloat window
-# alt - t : ~/.config/yabai/toggle-window-floating-tiling.sh
-alt - t : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
-
-shift + cmd + ctrl + alt - t : yabai -m window --toggle float;\
+# hyper - t : ~/.config/yabai/toggle-window-floating-tiling.sh
+hyper - t : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 alt - w : set index (yabai -m query --spaces --space | jq '.index') && \
@@ -64,7 +61,7 @@ alt - c : ~/.config/yabai/create_new_space.sh 1
 # toggle window zoom
 alt - d : yabai -m window --toggle zoom-parent
 # Make fullscreen
-alt - f : yabai -m window --toggle zoom-fullscreen
+hyper - f : yabai -m window --toggle zoom-fullscreen
 # toggle topmost (keep above other windows)
 alt - o : yabai -m window --toggle topmost
 # toggle window split type(切换分割方式)
@@ -75,19 +72,19 @@ cmd + alt - a : yabai -m space --layout bsp
 cmd + alt - d : yabai -m space --layout float
 
 # Change desktop
-alt - tab : yabai -m space --focus recent
-alt - n : yabai -m space --focus prev || yabai -m space --focus last
-alt - m : yabai -m space --focus next || yabai -m space --focus first
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
-alt - 9 : yabai -m space --focus 9
-alt - 0 : yabai -m space --focus 10
+hyper - tab : yabai -m space --focus recent
+hyper - n : yabai -m space --focus prev || yabai -m space --focus last
+hyper - m : yabai -m space --focus next || yabai -m space --focus first
+hyper - 1 : yabai -m space --focus 1
+hyper - 2 : yabai -m space --focus 2
+hyper - 3 : yabai -m space --focus 3
+hyper - 4 : yabai -m space --focus 4
+hyper - 5 : yabai -m space --focus 5
+hyper - 6 : yabai -m space --focus 6
+hyper - 7 : yabai -m space --focus 7
+hyper - 8 : yabai -m space --focus 8
+hyper - 9 : yabai -m space --focus 9
+hyper - 0 : yabai -m space --focus 10
 
 cmd + alt - 1 : yabai -m window --space  1; yabai -m space --focus 1
 cmd + alt - 2 : yabai -m window --space  2; yabai -m space --focus 2
