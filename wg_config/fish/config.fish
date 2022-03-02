@@ -1,24 +1,29 @@
 abbr -a vim nvim
 abbr ssh ssh
-alias sshvps="/usr/bin/ssh root@192.119.92.89"
-alias sshkbb="/usr/bin/ssh -p 60022 gang.wang@sh-jms.kuaibaobao.com"
 alias httpgd="godoc -http=:6060"
 
 # set -gx TERM tmux-256color
 set -U fish_user_paths ~/.cargo/bin ~/go/bin ~/.symfony/bin /opt/local/bin /opt/local/sbin ~/.composer/vendor/bin
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-set -g fish_user_paths ~/dev/soft/protoc3.16/bin $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/php/bin" $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/php/sbin" $fish_user_paths
 set LANG zh_CN.UTF-8
 set SDKROOT (/usr/bin/xcrun --show-sdk-path)
 
+setenv NACOS_SERVER "http://nacos.soundws.com/nacos"
+setenv NACOS_USERNAME "nacos_dev"
+setenv NACOS_PASSWORD "7OatNxoIJAC24gAT"
+setenv ENV "dev"
+setenv GWISE "local"
+
+
 # Base16 Shell
 if status --is-interactive
     # set BASE16_SHELL "$HOME/.config/base16-shell/"
     # source "$BASE16_SHELL/profile_helper.fish"
-
-	tmux ^ /dev/null; and exec true
+    if ! set -q TMUX
+		exec tmux
+	end
 end
 
 # Fish git prompt
@@ -105,3 +110,5 @@ function fish_greeting
 	set_color normal
 end
 set -g fish_user_paths "/usr/local/opt/mysql@5.7/bin" $fish_user_paths
+fish_add_path /usr/local/opt/php@7.2/bin
+fish_add_path /usr/local/opt/php@7.2/sbin

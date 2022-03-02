@@ -32,11 +32,17 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 
 " Semantic language support
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
-Plug 'nvim-lua/completion-nvim'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
+Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
+Plug 'hrsh7th/cmp-path', {'branch': 'main'}
+Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'ray-x/lsp_signature.nvim'
+
+" Only because nvim-cmp _requires_ snippets
+Plug 'hrsh7th/cmp-vsnip', {'branch': 'main'}
+Plug 'hrsh7th/vim-vsnip'
 
 " Syntactic language support
 Plug 'cespare/vim-toml'
@@ -44,22 +50,73 @@ Plug 'stephpy/vim-yaml'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+" copilot
+" Plug 'github/copilot.vim'
 call plug#end()
 
+set completeopt=menuone,noinsert,noselect
 " LSP configuration
 lua << END
 vim.lsp.set_log_level('error')
-local lspconfig = require('lspconfig')
+local cmp = require'cmp'
+local lspconfig = require'lspconfig'
+local has_words_before = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+end
+
+local feedkey = function(key, mode)
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+cmp.setup({
+  snippet = {
+    -- REQUIRED by nvim-cmp. get rid of it once we can
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body)
+    end,
+  },
+  mapping = {
+    -- <CR> immediately completes. C-n/C-p to select.
+    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif vim.fn["vsnip#available"](1) == 1 then
+        feedkey("<Plug>(vsnip-expand-or-jump)", "")
+      elseif has_words_before() then
+        cmp.complete()
+      else
+        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+      end
+    end, { "i", "s" }),
+  },
+  sources = cmp.config.sources({
+    -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
+    { name = 'nvim_lsp' },
+  }, {
+    { name = 'path' },
+    { name = 'buffer' },
+  }),
+  experimental = {
+    ghost_text = true,
+  },
+})
+
+-- Enable completing paths in :
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  })
+})
+
+-- Setup lspconfig.
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
   local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-
   --Enable completion triggered by <c-x><c-o>
   buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-
   -- Mappings.
   local opts = { noremap=true, silent=true }
-
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
@@ -76,33 +133,61 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 
-  -- Forward to other plugins
-  require'completion'.on_attach(client)
-  require('vim.lsp.diagnostic')._define_default_signs_and_highlights()
+  -- Get signatures (and _only_ signatures) when in argument lists.
+  require "lsp_signature".on_attach({
+    doc_lines = 0,
+    handler_opts = {
+      border = "none"
+    },
+  })
 end
 
-lspconfig.gopls.setup {
-    on_attach = on_attach,
-    flags = {
-      debounce_text_changes = 150,
-    },
-    settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+lspconfig.rust_analyzer.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+      },
+      completion = {
+        postfix = {
+          enable = false,
         },
-        staticcheck = true,
+        addCallArgumentSnippets = false,
       },
     },
+  },
+  capabilities = capabilities,
 }
 
-local servers = { "rust_analyzer", "intelephense" }
+lspconfig.gopls.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+      },
+      staticcheck = true,
+  },
+},
+  capabilities = capabilities,
+}
+
+local servers = { "intelephense" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
-    }
+    },
+    capabilities = capabilities,
   }
 end
 
@@ -117,12 +202,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 END
 
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-m> :NERDTreeFind<CR>
-
-
-let g:rooter_patterns = ['.git', 'Makefile', '*.sln', 'build/env.sh', 'go.mod', 'go.sum']
 
 let g:python3_host_prog="/usr/local/bin/python3"
 
@@ -152,6 +233,8 @@ syntax on
 hi Normal ctermbg=NONE
 " Brighter comments
 call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")
+" Make it clearly visible which argument we're at.
+call Base16hi("LspSignatureActiveParameter", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold", "")
 
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
@@ -236,7 +319,6 @@ let g:rustfmt_fail_silently = 0
 " let g:rustfmt_options = '--edition 2018'
 let $RUST_SRC_PATH = systemlist("rustc --print sysroot")[0] . "/lib/rustlib/src/rust/src"
 
-set completeopt=menuone,noinsert,noselect
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=300
 
@@ -275,7 +357,7 @@ set encoding=utf-8
 set scrolloff=2
 set noshowmode
 set hidden
-set nowrap
+set wrap
 set nojoinspaces
 let g:sneak#s_next = 1
 set printfont=:h10
@@ -308,6 +390,9 @@ set softtabstop=4
 set tabstop=4
 " set noexpandtab
 set expandtab
+
+
+set textwidth=100
 
 
 " Wrapping options
@@ -394,16 +479,6 @@ nnoremap ; :
 " Ctrl+c and Ctrl+j as Esc
 inoremap <C-j> <Esc>
 
-nnoremap <C-k> <Esc>
-inoremap <C-k> <Esc>
-vnoremap <C-k> <Esc>
-snoremap <C-k> <Esc>
-xnoremap <C-k> <Esc>
-cnoremap <C-k> <Esc>
-onoremap <C-k> <Esc>
-lnoremap <C-k> <Esc>
-tnoremap <C-k> <Esc>
-
 nnoremap <C-c> <Esc>
 inoremap <C-c> <Esc>
 vnoremap <C-c> <Esc>
@@ -475,14 +550,6 @@ noremap <leader>n ct-
 map <F1> <Esc>
 imap <F1> <Esc>
 
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-
-" use <Tab> as trigger keys
-imap <Tab> <Plug>(completion_smart_tab)
-imap <S-Tab> <Plug>(completion_smart_s_tab)
-
 " Enable type inlay hints
 autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
@@ -534,7 +601,6 @@ autocmd BufRead *.md set filetype=markdown
 autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
-autocmd BufRead *.xlsx.axlsx set filetype=ruby
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " Script plugins
