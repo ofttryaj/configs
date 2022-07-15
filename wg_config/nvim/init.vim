@@ -32,6 +32,7 @@ Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'leafgarland/typescript-vim'
 
 " Semantic language support
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-lua/lsp_extensions.nvim'
 Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
@@ -50,9 +51,10 @@ Plug 'stephpy/vim-yaml'
 Plug 'dag/vim-fish'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-" copilot
-" Plug 'github/copilot.vim'
 call plug#end()
+
+let g:rooter_patterns = ['__vim_project_root', '.git/']
+let g:rooter_silent_chdir = 1
 
 set completeopt=menuone,noinsert,noselect
 " LSP configuration
@@ -75,8 +77,12 @@ cmp.setup({
       vim.fn["vsnip#anonymous"](args.body)
     end,
   },
-  mapping = {
-    -- <CR> immediately completes. C-n/C-p to select.
+  mapping = cmp.mapping.preset.insert({
+    -- Tab immediately completes. C-n/C-p to select.
+    -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-v>'] = cmp.mapping.complete(),
+    ['<C-e>'] = cmp.mapping.abort(),
     ['<CR>'] = cmp.mapping.confirm({ select = true }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -89,12 +95,11 @@ cmp.setup({
         fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
-  },
+  }),
   sources = cmp.config.sources({
     -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
     { name = 'nvim_lsp' },
   }, {
-    { name = 'path' },
     { name = 'buffer' },
   }),
   experimental = {
@@ -102,36 +107,38 @@ cmp.setup({
   },
 })
 
--- Enable completing paths in :
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  })
-})
+-- Mappings.
+-- See `:help vim.diagnostic.*` for documentation on any of the below functions
+local opts = { noremap=true, silent=true }
+vim.keymap.set('n', '<space>e', vim.diagnostic.open_float, opts)
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, opts)
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, opts)
+vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 
--- Setup lspconfig.
+-- Use an on_attach function to only map the following keys
+-- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-  local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-  --Enable completion triggered by <c-x><c-o>
-  buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+  -- Enable completion triggered by <c-x><c-o>
+  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+
   -- Mappings.
-  local opts = { noremap=true, silent=true }
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<space>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
-  buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
-  buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  local bufopts = { noremap=true, silent=true, buffer=bufnr }
+  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+  vim.keymap.set('n', '<space>wl', function()
+    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+  end, bufopts)
+  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
 
   -- Get signatures (and _only_ signatures) when in argument lists.
   require "lsp_signature".on_attach({
@@ -142,16 +149,35 @@ local on_attach = function(client, bufnr)
   })
 end
 
+-- Enable completing paths in :
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+      { name = 'path' }
+    }, {
+      { name = 'cmdline' }
+    })
+})
+
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-lspconfig.rust_analyzer.setup {
+lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
   },
+  cmd = { "/Users/jon/Downloads/rust-analyzer-x86_64-apple-darwin" },
   settings = {
     ["rust-analyzer"] = {
+      assist = {
+          importGranularity = "module",
+          importPrefix = "self",
+      },
       cargo = {
-        allFeatures = true,
+          loadOutDirsFromCheck = true,
+          allFeatures = true,
+      },
+      procMacro = {
+          enable = true
       },
       completion = {
         postfix = {
@@ -162,34 +188,37 @@ lspconfig.rust_analyzer.setup {
     },
   },
   capabilities = capabilities,
-}
+})
 
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  flags = {
-    debounce_text_changes = 150,
-  },
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-  },
-},
-  capabilities = capabilities,
-}
-
-local servers = { "intelephense" }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+lspconfig.gopls.setup({
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     },
+    settings = {
+      gopls = {
+        analyses = {
+          unusedparams = true,
+        },
+        staticcheck = true,
+      },
+   },
     capabilities = capabilities,
-  }
-end
+})
+
+lspconfig.intelephense.setup({
+    on_attach = on_attach,
+    cmd = { "intelephense", "--stdio" },
+    filetypes = { "php" },
+    -- root_dir = function(path) 
+    --     return path
+    -- end,
+    flags = {
+      debounce_text_changes = 150,
+    },
+    capabilities = capabilities,
+})
+
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
@@ -447,10 +476,10 @@ set listchars=nbsp:¬,extends:»,precedes:«,trail:•
 
 noremap s <nop>
 
-map si :set splitright<CR>:vsplit<CR>
-map sn :set nosplitright<CR>:vsplit<CR>
-map su :set nosplitbelow<CR>:split<CR>
-map se :set splitbelow<CR>:split<CR>
+" map si :set splitright<CR>:vsplit<CR>
+" map sn :set nosplitright<CR>:vsplit<CR>
+" map su :set nosplitbelow<CR>:split<CR>
+" map se :set splitbelow<CR>:split<CR>
 
 map <LEADER>i <C-w>l
 map <LEADER>u <C-w>k
@@ -551,7 +580,7 @@ map <F1> <Esc>
 imap <F1> <Esc>
 
 " Enable type inlay hints
-autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
+" autocmd CursorHold,CursorHoldI *.rs :lua require'lsp_extensions'.inlay_hints{ only_current_line = true }
 
 " <leader><leader> toggles between buffers
 nnoremap <leader><leader> <c-^>
@@ -561,9 +590,6 @@ nnoremap <leader>, :set invlist<cr>
 
 " <leader>q shows stats
 nnoremap <leader>q g<c-g>
-
-" Keymap for replacing up to next _ or -
-noremap <leader>m ct_
 
 " I can type :help on my own, thanks.
 map <F1> <Esc>
@@ -601,6 +627,7 @@ autocmd BufRead *.md set filetype=markdown
 autocmd BufRead *.lds set filetype=ld
 autocmd BufRead *.tex set filetype=tex
 autocmd BufRead *.trm set filetype=c
+autocmd BufRead *.xlsx.axlsx set filetype=ruby
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 
 " Script plugins
