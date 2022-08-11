@@ -1,0 +1,29 @@
+set nocompatible
+filetype on
+filetype plugin on
+filetype indent on
+syntax on
+set relativenumber
+set number
+set expandtab
+set nobackup
+set scrolloff=10
+set nowrap
+set incsearch
+set ignorecase
+set smartcase
+set showcmd
+set showmode
+set showmatch
+set hlsearch
+
+inoremap <C-j> <Esc>
+vnoremap <C-h> :nohlsearch<cr>
+nnoremap <C-h> :nohlsearch<cr>
+
+map H ^
+map L $
+nnoremap ; :
+
+let &t_SI = "\e[6 q"
+let &t_EI = "\e[2 q"
