@@ -159,13 +159,13 @@ cmp.setup.cmdline(':', {
     })
 })
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 lspconfig.rust_analyzer.setup({
   on_attach = on_attach,
   flags = {
     debounce_text_changes = 150,
   },
-  cmd = { "/Users/jon/Downloads/rust-analyzer-x86_64-apple-darwin" },
+  cmd = { "rust-analyzer" },
   settings = {
     ["rust-analyzer"] = {
       assist = {
@@ -234,7 +234,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-m> :NERDTreeFind<CR>
 
-let g:python3_host_prog="/usr/local/bin/python3"
+let g:python3_host_prog="/usr/bin/python3"
 
 if has('nvim')
     set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
@@ -554,6 +554,7 @@ inoremap <right> <nop>
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
+nnoremap <C-x> :1, bdelete<CR>
 
 " Move by line
 nnoremap j gj
@@ -639,3 +640,4 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " =============================================================================
 " # Footer
 " =============================================================================
+
