@@ -16,7 +16,6 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
-Plug 'machakann/vim-highlightedyank'
 Plug 'justinmk/vim-sneak'
 
 Plug 'itchyny/lightline.vim'
@@ -250,7 +249,6 @@ if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
   set termguicolors
 endif
 
-let g:highlightedyank_highlight_duration = 1000
 
 " Base16
 set background=dark
@@ -470,6 +468,8 @@ set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
 
+au TextYankPost * silent! lua vim.highlight.on_yank()
+
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•
@@ -640,4 +640,3 @@ autocmd FileType json syntax match Comment +\/\/.\+$+
 " =============================================================================
 " # Footer
 " =============================================================================
-
