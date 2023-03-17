@@ -16,6 +16,7 @@ call plug#begin('~/.local/share/nvim/site/plugged')
 " VIM enhancements
 Plug 'ciaranm/securemodelines'
 Plug 'vim-scripts/localvimrc'
+Plug 'machakann/vim-highlightedyank'
 Plug 'justinmk/vim-sneak'
 
 Plug 'itchyny/lightline.vim'
@@ -38,6 +39,7 @@ Plug 'hrsh7th/cmp-nvim-lsp', {'branch': 'main'}
 Plug 'hrsh7th/cmp-buffer', {'branch': 'main'}
 Plug 'hrsh7th/cmp-path', {'branch': 'main'}
 Plug 'hrsh7th/nvim-cmp', {'branch': 'main'}
+Plug 'hrsh7th/cmp-cmdline'
 Plug 'ray-x/lsp_signature.nvim'
 
 " Only because nvim-cmp _requires_ snippets
@@ -62,48 +64,49 @@ vim.lsp.set_log_level('error')
 local cmp = require'cmp'
 local lspconfig = require'lspconfig'
 local has_words_before = function()
-  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
 local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 cmp.setup({
-  snippet = {
-    -- REQUIRED by nvim-cmp. get rid of it once we can
-    expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert({
-    -- Tab immediately completes. C-n/C-p to select.
-    -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-v>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
-    ["<Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif vim.fn["vsnip#available"](1) == 1 then
-        feedkey("<Plug>(vsnip-expand-or-jump)", "")
-      elseif has_words_before() then
-        cmp.complete()
-      else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-      end
-    end, { "i", "s" }),
-  }),
-  sources = cmp.config.sources({
+    snippet = {
+        -- REQUIRED by nvim-cmp. get rid of it once we can
+        expand = function(args)
+          vim.fn["vsnip#anonymous"](args.body)
+        end,
+    },
+    mapping = cmp.mapping.preset.insert({
+        -- Tab immediately completes. C-n/C-p to select.
+        -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+        ['<C-v>'] = cmp.mapping.complete(),
+        ['<C-e>'] = cmp.mapping.abort(),
+        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif vim.fn["vsnip#available"](1) == 1 then
+            feedkey("<Plug>(vsnip-expand-or-jump)", "")
+          elseif has_words_before() then
+            cmp.complete()
+          else
+            fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+          end
+        end, { "i", "s" }),
+    }),
+    sources = cmp.config.sources({
     -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
-    { name = 'nvim_lsp' },
-  }, {
-    { name = 'buffer' },
-  }),
-  experimental = {
-    ghost_text = true,
-  },
+        { name = 'nvim_lsp' },
+        { name = 'vsnip' },
+        }, {
+        { name = 'buffer' },
+    }),
+    experimental = {
+        ghost_text = true,
+    },
 })
 
 -- Mappings.
@@ -117,55 +120,55 @@ vim.keymap.set('n', '<space>q', vim.diagnostic.setloclist, opts)
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-  -- Enable completion triggered by <c-x><c-o>
-  vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    -- Enable completion triggered by <c-x><c-o>
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- Mappings.
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
-  local bufopts = { noremap=true, silent=true, buffer=bufnr }
-  vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-  vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-  vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-  vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-  vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-  vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  vim.keymap.set('n', '<space>wl', function()
-    print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-  end, bufopts)
-  vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-  vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-  vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
-  vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-  vim.keymap.set('n', '<space>f', vim.lsp.buf.formatting, bufopts)
+    -- Mappings.
+    -- See `:help vim.lsp.*` for documentation on any of the below functions
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+    vim.keymap.set('n', '<space>wl', function()
+      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+    end, bufopts)
+    vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
+    vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
+    vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-  -- Get signatures (and _only_ signatures) when in argument lists.
-  require "lsp_signature".on_attach({
+    -- Get signatures (and _only_ signatures) when in argument lists.
+    require "lsp_signature".on_attach({
     doc_lines = 0,
     handler_opts = {
       border = "none"
     },
-  })
+    })
 end
 
 -- Enable completing paths in :
 cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
       { name = 'path' }
     }, {
       { name = 'cmdline' }
     })
 })
 
-local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.rust_analyzer.setup({
-  on_attach = on_attach,
-  flags = {
+    on_attach = on_attach,
+    flags = {
     debounce_text_changes = 150,
-  },
-  cmd = { "rust-analyzer" },
-  settings = {
+    },
+    cmd = { "/Users/jon/Downloads/rust-analyzer-x86_64-apple-darwin" },
+    settings = {
     ["rust-analyzer"] = {
       assist = {
           importGranularity = "module",
@@ -185,8 +188,8 @@ lspconfig.rust_analyzer.setup({
         addCallArgumentSnippets = false,
       },
     },
-  },
-  capabilities = capabilities,
+    },
+    capabilities = capabilities,
 })
 
 lspconfig.gopls.setup({
@@ -201,7 +204,7 @@ lspconfig.gopls.setup({
         },
         staticcheck = true,
       },
-   },
+    },
     capabilities = capabilities,
 })
 
@@ -220,35 +223,36 @@ lspconfig.intelephense.setup({
 
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-  vim.lsp.diagnostic.on_publish_diagnostics, {
-    virtual_text = true,
-    signs = true,
-    underline = true,
-    update_in_insert = true,
-  }
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = true,
+      signs = true,
+      underline = true,
+      update_in_insert = true,
+    }
 )
 END
 
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-m> :NERDTreeFind<CR>
+nnoremap <C-n> :NERDTreeFind<CR>
 
-let g:python3_host_prog="/usr/bin/python3"
+let g:python3_host_prog="/usr/local/bin/python3"
 
 if has('nvim')
-    set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-    set inccommand=nosplit
-    noremap <C-q> :confirm qall<CR>
+set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
+set inccommand=nosplit
+noremap <C-q> :confirm qall<CR>
 end
 
 if !has('gui_running')
-  set t_Co=256
+set t_Co=256
 endif
 if (match($TERM, "-256color") != -1) && (match($TERM, "screen-256color") == -1)
-  " screen does not (yet) support truecolor
-  set termguicolors
+" screen does not (yet) support truecolor
+set termguicolors
 endif
 
+let g:highlightedyank_highlight_duration = 1000
 
 " Base16
 set background=dark
@@ -266,59 +270,59 @@ call Base16hi("LspSignatureActiveParameter", g:base16_gui05, g:base16_gui03, g:b
 " fzf
 let g:fzf_layout = { 'down': '~20%' }
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+\ call fzf#vim#grep(
+\   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+\   <bang>0 ? fzf#vim#with_preview('up:60%')
+\           : fzf#vim#with_preview('right:50%:hidden', '?'),
+\   <bang>0)
 
 function! s:list_cmd()
-  let base = fnamemodify(expand('%'), ':h:.:S')
-  return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
+let base = fnamemodify(expand('%'), ':h:.:S')
+return base == '.' ? 'fd --type file --follow' : printf('fd --type file --follow | proximity-sort %s', shellescape(expand('%')))
 endfunction
 
 command! -bang -nargs=? -complete=dir Files
-  \ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
-  \                               'options': '--tiebreak=index'}, <bang>0)
+\ call fzf#vim#files(<q-args>, {'source': s:list_cmd(),
+\                               'options': '--tiebreak=index'}, <bang>0)
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
-                \ "textwidth",   "tw",
-                \ "softtabstop", "sts",
-                \ "tabstop",     "ts",
-                \ "shiftwidth",  "sw",
-                \ "expandtab",   "et",   "noexpandtab", "noet",
-                \ "filetype",    "ft",
-                \ "foldmethod",  "fdm",
-                \ "readonly",    "ro",   "noreadonly", "noro",
-                \ "rightleft",   "rl",   "norightleft", "norl",
-                \ "colorcolumn"
-                \ ]
+	    \ "textwidth",   "tw",
+	    \ "softtabstop", "sts",
+	    \ "tabstop",     "ts",
+	    \ "shiftwidth",  "sw",
+	    \ "expandtab",   "et",   "noexpandtab", "noet",
+	    \ "filetype",    "ft",
+	    \ "foldmethod",  "fdm",
+	    \ "readonly",    "ro",   "noreadonly", "noro",
+	    \ "rightleft",   "rl",   "norightleft", "norl",
+	    \ "colorcolumn"
+	    \ ]
 
 " Lightline
 let g:lightline = {
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileencoding', 'filetype' ] ],
-      \ },
-      \ 'component_function': {
-      \   'filename': 'LightlineFilename'
-      \ },
-      \ }
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'readonly', 'filename', 'modified' ] ],
+  \   'right': [ [ 'lineinfo' ],
+  \              [ 'percent' ],
+  \              [ 'fileencoding', 'filetype' ] ],
+  \ },
+  \ 'component_function': {
+  \   'filename': 'LightlineFilename'
+  \ },
+  \ }
 function! LightlineFilename()
-  return expand('%:t') !=# '' ? @% : '[No Name]'
+return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
 
 " from http://sheerun.net/2014/03/21/how-to-boost-your-vim-productivity/
 if executable('ag')
-  set grepprg=ag\ --nogroup\ --nocolor
+set grepprg=ag\ --nogroup\ --nocolor
 endif
 if executable('rg')
-  set grepprg=rg\ --no-heading\ --vimgrep
-  set grepformat=%f:%l:%c:%m
+set grepprg=rg\ --no-heading\ --vimgrep
+set grepformat=%f:%l:%c:%m
 endif
 
 " Latex
@@ -468,8 +472,6 @@ set showcmd " Show (partial) command in status line.
 set mouse=a " Enable mouse usage (all modes) in terminals
 set shortmess+=c " don't give |ins-completion-menu| messages.
 
-au TextYankPost * silent! lua vim.highlight.on_yank()
-
 " Show those damn hidden characters
 " Verbose: set listchars=nbsp:¬,eol:¶,extends:»,precedes:«,trail:•
 set listchars=nbsp:¬,extends:»,precedes:«,trail:•
@@ -554,7 +556,6 @@ inoremap <right> <nop>
 " Left and right can switch buffers
 nnoremap <left> :bp<CR>
 nnoremap <right> :bn<CR>
-nnoremap <C-x> :1, bdelete<CR>
 
 " Move by line
 nnoremap j gj
