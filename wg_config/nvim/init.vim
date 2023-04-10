@@ -75,7 +75,7 @@ cmp.setup({
     snippet = {
         -- REQUIRED by nvim-cmp. get rid of it once we can
         expand = function(args)
-          vim.fn["vsnip#anonymous"](args.body)
+            vim.fn["vsnip#anonymous"](args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({
@@ -86,19 +86,19 @@ cmp.setup({
         ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true }),
         ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif vim.fn["vsnip#available"](1) == 1 then
-            feedkey("<Plug>(vsnip-expand-or-jump)", "")
-          elseif has_words_before() then
-            cmp.complete()
-          else
-            fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
-          end
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif vim.fn["vsnip#available"](1) == 1 then
+                feedkey("<Plug>(vsnip-expand-or-jump)", "")
+            elseif has_words_before() then
+                cmp.complete()
+            else
+                fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+            end
         end, { "i", "s" }),
     }),
     sources = cmp.config.sources({
-    -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
+        -- TODO: currently snippets from lsp end up getting prioritized -- stop that!
         { name = 'nvim_lsp' },
         { name = 'vsnip' },
         }, {
@@ -134,7 +134,7 @@ local on_attach = function(client, bufnr)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wl', function()
-      print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+        print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
     vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
@@ -144,10 +144,10 @@ local on_attach = function(client, bufnr)
 
     -- Get signatures (and _only_ signatures) when in argument lists.
     require "lsp_signature".on_attach({
-    doc_lines = 0,
-    handler_opts = {
-      border = "none"
-    },
+        doc_lines = 0,
+        handler_opts = {
+            border = "none"
+        },
     })
 end
 
@@ -155,9 +155,9 @@ end
 cmp.setup.cmdline(':', {
     mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
-      { name = 'path' }
-    }, {
-      { name = 'cmdline' }
+        { name = 'path' }
+        }, {
+        { name = 'cmdline' }
     })
 })
 
@@ -165,29 +165,21 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.rust_analyzer.setup({
     on_attach = on_attach,
     flags = {
-    debounce_text_changes = 150,
+        debounce_text_changes = 150,
     },
     cmd = { "/Users/jon/Downloads/rust-analyzer-x86_64-apple-darwin" },
     settings = {
-    ["rust-analyzer"] = {
-      assist = {
-          importGranularity = "module",
-          importPrefix = "self",
-      },
-      cargo = {
-          loadOutDirsFromCheck = true,
-          allFeatures = true,
-      },
-      procMacro = {
-          enable = true
-      },
-      completion = {
-        postfix = {
-          enable = false,
+        ["rust-analyzer"] = {
+            cargo = {
+                allFeatures = true,
+            },
+            completion = {
+                postfix = {
+                    enable = false,
+                },
+                addCallArgumentSnippets = false,
+            },
         },
-        addCallArgumentSnippets = false,
-      },
-    },
     },
     capabilities = capabilities,
 })
@@ -195,15 +187,15 @@ lspconfig.rust_analyzer.setup({
 lspconfig.gopls.setup({
     on_attach = on_attach,
     flags = {
-      debounce_text_changes = 150,
+        debounce_text_changes = 150,
     },
     settings = {
-      gopls = {
-        analyses = {
-          unusedparams = true,
+        gopls = {
+            analyses = {
+                unusedparams = true,
+            },
+            staticcheck = true,
         },
-        staticcheck = true,
-      },
     },
     capabilities = capabilities,
 })
@@ -216,7 +208,7 @@ lspconfig.intelephense.setup({
     --     return path
     -- end,
     flags = {
-      debounce_text_changes = 150,
+        debounce_text_changes = 150,
     },
     capabilities = capabilities,
 })
@@ -224,10 +216,10 @@ lspconfig.intelephense.setup({
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-      virtual_text = true,
-      signs = true,
-      underline = true,
-      update_in_insert = true,
+        virtual_text = true,
+        signs = true,
+        underline = true,
+        update_in_insert = true,
     }
 )
 END
@@ -242,7 +234,7 @@ if has('nvim')
 set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 set inccommand=nosplit
 noremap <C-q> :confirm qall<CR>
-end
+endif
 
 if !has('gui_running')
 set t_Co=256
@@ -287,31 +279,31 @@ command! -bang -nargs=? -complete=dir Files
 
 " Plugin settings
 let g:secure_modelines_allowed_items = [
-	    \ "textwidth",   "tw",
-	    \ "softtabstop", "sts",
-	    \ "tabstop",     "ts",
-	    \ "shiftwidth",  "sw",
-	    \ "expandtab",   "et",   "noexpandtab", "noet",
-	    \ "filetype",    "ft",
-	    \ "foldmethod",  "fdm",
-	    \ "readonly",    "ro",   "noreadonly", "noro",
-	    \ "rightleft",   "rl",   "norightleft", "norl",
-	    \ "colorcolumn"
-	    \ ]
+\ "textwidth",   "tw",
+\ "softtabstop", "sts",
+\ "tabstop",     "ts",
+\ "shiftwidth",  "sw",
+\ "expandtab",   "et",   "noexpandtab", "noet",
+\ "filetype",    "ft",
+\ "foldmethod",  "fdm",
+\ "readonly",    "ro",   "noreadonly", "noro",
+\ "rightleft",   "rl",   "norightleft", "norl",
+\ "colorcolumn"
+\ ]
 
 " Lightline
 let g:lightline = {
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'readonly', 'filename', 'modified' ] ],
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'percent' ],
-  \              [ 'fileencoding', 'filetype' ] ],
-  \ },
-  \ 'component_function': {
-  \   'filename': 'LightlineFilename'
-  \ },
-  \ }
+\ 'active': {
+\   'left': [ [ 'mode', 'paste' ],
+\             [ 'readonly', 'filename', 'modified' ] ],
+\   'right': [ [ 'lineinfo' ],
+\              [ 'percent' ],
+\              [ 'fileencoding', 'filetype' ] ],
+\ },
+\ 'component_function': {
+\   'filename': 'LightlineFilename'
+\ },
+\ }
 function! LightlineFilename()
 return expand('%:t') !=# '' ? @% : '[No Name]'
 endfunction
