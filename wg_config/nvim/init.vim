@@ -167,7 +167,7 @@ lspconfig.rust_analyzer.setup({
     flags = {
         debounce_text_changes = 150,
     },
-    cmd = { "/Users/jon/Downloads/rust-analyzer-x86_64-apple-darwin" },
+    cmd = { "/Users/jon/.rustup/toolchains/nightly-x86_64-apple-darwin/bin/rust-analyzer" },
     settings = {
         ["rust-analyzer"] = {
             cargo = {
@@ -252,6 +252,7 @@ let base16colorspace=256
 let g:base16_shell_path="~/.config/base16-shell/scripts/"
 " Colors
 colorscheme base16-gruvbox-dark-hard
+" colorscheme base16-atelier-dune
 syntax on
 hi Normal ctermbg=NONE
 " Brighter comments
@@ -383,9 +384,9 @@ set hidden
 set wrap
 set nojoinspaces
 let g:sneak#s_next = 1
-set printfont=:h10
-set printencoding=utf-8
-set printoptions=paper:letter
+" set printfont=:h10
+" set printencoding=utf-8
+" set printoptions=paper:letter
 " Always draw sign column. Prevent buffer moving when adding/deleting sign.
 set signcolumn=yes
 

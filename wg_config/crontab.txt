@@ -1,0 +1,229 @@
+https://history-maps.com/zh | HistoryMaps | 通过地图和时间线直观地学习历史
+https://github.com/yanfeizhang/coder-kung-fu | yanfeizhang/coder-kung-fu: 开发内功修炼
+https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MjM5Njg5NDgwNA==&action=getalbum&album_id=1532487451997454337&scene=173&from_msgid=2247485146&from_itemidx=1&count=3&nolastread=1#wechat_redirect | #开发内功修炼之网络篇
+https://www.bilibili.com/video/BV1c4411d7jb/?p=1%20%20&vd_source=b1b0395a3a5608da100b733043ab8781 | 1.1 计算机网络在信息时代的作用_哔哩哔哩_bilibili
+https://github.com/jonhoo/orst/blob/master/src/quicksort.rs | orst/src/quicksort.rs at master · jonhoo/orst
+https://blog.csdn.net/qq_51654808/article/details/127036766 | (13条消息) 两个单链表相交的一系列问题_小羊的预备程序员的博客-CSDN博客
+https://github.com/dtolnay/syn/blob/master/examples/heapsize/heapsize_derive/src/lib.rs | syn/examples/heapsize/heapsize_derive/src/lib.rs at master · dtolnay/syn
+https://docs.rs/syn/latest/syn/parse/index.html | syn::parse - Rust
+https://neovim.io/doc/user/lua.html | Lua - Neovim docs
+https://neovim.io/doc/user/lua-guide.html | Lua-guide - Neovim docs
+https://learngitbranching.js.org/?locale=zh_CN | Learn Git Branching
+https://www.ixigua.com/search/influxdb/?logTag=423ac644324e5c15d0b4&tab_name=home&fss=input | influxdb - 西瓜视频
+https://github.com/imdario/mergo | imdario/mergo: Mergo: merging Go structs and maps since 2013
+
+https://byoungd.github.io/English-level-up-tips/#/part-1/2-vocabulary?id=summary | 2.单词篇
+https://wenfh2020.com/archive/ | 归档
+https://iximiuz.com/en/ | Ivan on Containers, Kubernetes, and Server-Side
+https://blog.bytebytego.com/ | ByteByteGo Newsletter | Alex Xu | Substack
+
+https://golang.dbwu.tech/ | Go 语言必知必会 | Go 语言必知必会
+https://github.com/elliotchance/pie | elliotchance/pie: 🍕 Enjoy a slice! A utility library for dealing with slices and maps that focuses on type safety and performance.
+https://github.com/Shpota/goxygen | Shpota/goxygen: Generate a modern Web project with Go and Angular, React or Vue in seconds 🎲
+https://github.com/trufflesecurity/trufflehog | trufflesecurity/trufflehog: Find and verify credentials
+https://connect.build/ | Connect · Simple, reliable, interoperable. A better gRPC.
+https://miller.readthedocs.io/en/6.8.0/10min/ | Miller in 10 minutes - Miller 6.8.0 Documentation
+
+https://s3tlxskbq3.feishu.cn/docx/NyPqdCKraoXz9gxNVCfcIFdnnAc | The Document is All You Need！一站式 LLM底层技术原理入门指南 - 飞书云文档
+https://app.copilothub.ai/read/s/1hxkuh7m4xzwg | FLM-101B: An Open LLM and How to Train It with $100K Budget
+https://www.cnblogs.com/dotey/p/17336142.html | 如何训练你自己的大型语言模型 - 宝玉 - 博客园
+https://promptperfect.jinaai.cn/ | PromptPerfect - Elevate Your Prompts to Perfection with AI Prompt Engineering
+https://aigc.phodal.com/future-ai-2.0.html | 程序员的 AI 2.0 新机遇 - 构筑大语言模型应用：应用开发与架构设计
+https://learningprompt.wiki/docs?continueFlag=785b1b86603c0b46a030ec215edcaf12 | 👋 Welcome | Learning Prompt
+https://www.clickprompt.org/zh-CN/ | ClickPrompt - Streamline your prompt design
+https://ivonblog.com/posts/stable-diffusion-webui-manuals/zh-cn/installation/macos-installation/ | 🖥️ 安装至macOS | Stable Diffusion WebUI使用手冊(简体中文)｜Ivon的部落格
+https://learn.deeplearning.ai/langchain/lesson/1/introduction | DLAI - Learning Platform Beta
+
+https://github.com/k8gege/LadonGo/blob/main/nbt/ip.go | LadonGo/ip.go at main · k8gege/LadonGo · GitHub
+
+https://tfpk.github.io/nominomicon/chapter_6.html | Repeating Parsers - The Nom Guide (Nominomicon)
+https://juejin.cn/post/7034152896161808421 | 「Rust + Nom → Parser」分析 roamresearch graph - 掘金
+https://luoguochun.cn/post/2021-09-12-rust-lib-nom-intro/ | nom -- 乐高式富有语义的parser - BUF1024!!!
+https://rustmagazine.github.io/rust_magazine_2021/chapter_4/nom_url.html | 使用 nom 解析 url - Rust精选
+https://zhuanlan.zhihu.com/p/115017849 | 【使用 Rust 写 Parser】1. 初识 nom - 知乎
+
+https://pythoncat.top/ | 豌豆花下猫
+https://tairraos.github.io/IntermediatePython/args_kwargs/Usage_kwargs/ | 1.2 **kwargs 的用法 - 《Python进阶》
+http://www.uinio.com/Linux/Shell/ | Bash Shell 脚本编程实践 - UinIO.com 电子技术博客
+http://www.uinio.com/Linux/Shell/logo.png | http://www.uinio.com/Linux/Shell/logo.png
+
+https://blog.csdn.net/qq_28205153/article/details/55798628 | (12条消息) AES加密算法的详细介绍与实现_TimeShatter的博客-CSDN博客
+https://blog.csdn.net/qq_28205153/article/details/55798628 | (12条消息) AES加密算法的详细介绍与实现_TimeShatter的博客-CSDN博客
+https://segmentfault.com/a/1190000021267253 | golang基础学习-AES加密 - Keil - SegmentFault 思否
+https://cloud.tencent.com/developer/article/1475706 | RSA加密解密（无数据大小限制，php、go、java互通实现） - 腾讯云开发者社区-腾讯云
+https://codeantenna.com/a/FZqjeg4ZCX | GO实现MD5和RSA分段加解密 - CodeAntenna
+
+https://juejin.cn/post/7123850733539033119 | Kafka的消费者Lag - 掘金
+https://cloud.tencent.com/developer/article/1708388 | Kafka分区分配策略（Partition Assignment Strategy） - 腾讯云开发者社区-腾讯云
+https://blog.csdn.net/lizhitao/article/details/39499283 | apache kafka技术分享系列(目录索引)_kafka学习目录_幽灵之使的博客-CSDN博客
+https://www.zhihu.com/question/56172498 | kafka 推荐书籍？ - 知乎
+
+https://regexper.com/ | Regexper
+https://github.com/fighting41love/funNLP | fighting41love/funNLP: 中英文敏感词、语言检测、中外手机/电话归属地/运营商查询、名字推断性别、手机号抽取、身份证抽取、邮箱抽取、中日文人名库、中文缩写库、拆字词典、词汇情感值、停用词、反动词表、暴恐词表、繁简体转换、英文模拟中文发音、汪峰歌词生成器、职业名称词库、同义词库、反义词库、否定词库、汽车品牌词库、汽车零件词库、连续英文切割、各种中文词向量、公司名字大全、古诗词库、IT词库、财经词库、成语词库、地名词库、历史名人词库、诗词词库、医学词库、饮食词库、法律词库、汽车词库、动物词库、中文聊天语料、中文谣言数据、百度中文问答数据集、句子相似度匹配算法集合、bert资源、文本生成&摘要相关工具、cocoNLP信息抽取工具、国内电话号码正则匹配、清华大学XLORE:中英文跨语言百科知识图谱、清华大学人工智能技术系列报告、自然语言生成、NLU太难了系列、自动对联数据及机器人、用户名黑名单列表、罪名法务名词及分类模型、微信公众号语料、cs224n深度学习自然语言处理课程、中文手写汉字识别、中文自然语言处理 语料/数据集、变量命名神器、分词语料库+代码、任务型对话英文数据集、ASR 语音数据集 + 基于深度学习的中文语音识别系统、笑声检测器、Microsoft多语言数字/单位/如日期时间识别包、中华新华字典数据库及api(包括常用歇后语、成语、词语和汉字)、文档图谱自动生成、SpaCy 中文模型、Common Voice语音识别数据集新版、神经网络关系抽取、基于bert的命名实体识别、关键词(Keyphrase)抽取包pke、基于医疗领域知识图谱的问答系统、基于依存句法与语义角色标注的事件三元组抽取、依存句法分析4万句高质量标注数据、cnocr：用来做中文OCR的Python3包、中文人物关系知识图谱项目、中文nlp竞赛项目及代码汇总、中文字符数据、speech-aligner: 从“人声语音”及其“语言文本”产生音素级别时间对齐标注的工具、AmpliGraph: 知识图谱表示学习(Python)库：知识图谱概念链接预测、Scattertext 文本可视化(python)、语言/知识表示工具：BERT & ERNIE、中文对比英文自然语言处理NLP的区别综述、Synonyms中文近义词工具包、HarvestText领域自适应文本挖掘工具（新词发现-情感分析-实体链接等）、word2word：(Python)方便易用的多语言词-词对集：62种语言/3,564个多语言对、语音识别语料生成工具：从具有音频/字幕的在线视频创建自动语音识别(ASR)语料库、构建医疗实体识别的模型（包含词典和语料标注）、单文档非监督的关键词抽取、Kashgari中使用gpt-2语言模型、开源的金融投资数据提取工具、文本自动摘要库TextTeaser: 仅支持英文、人民日报语料处理工具集、一些关于自然语言的基本模型、基于14W歌曲知识库的问答尝试--功能包括歌词接龙and已知歌词找歌曲以及歌曲歌手歌词三角关系的问答、基于Siamese bilstm模型的相似句子判定模型并提供训练数据集和测试数据集、用Transformer编解码模型实现的根据Hacker News文章标题自动生成评论、用BERT进行序列标记和文本分类的模板代码、LitBank：NLP数据集——支持自然语言处理和计算人文学科任务的100部带标记英文小说语料、百度开源的基准信息抽取系统、虚假新闻数据集、Facebook: LAMA语言模型分析，提供Transformer-XL/BERT/ELMo/GPT预训练语言模型的统一访问接口、CommonsenseQA：面向常识的英文QA挑战、中文知识图谱资料、数据及工具、各大公司内部里大牛分享的技术文档 PDF 或者 PPT、自然语言生成SQL语句（英文）、中文NLP数据增强（EDA）工具、英文NLP数据增强工具 、基于医药知识图谱的智能问答系统、京东商品知识图谱、基于mongodb存储的军事领域知识图谱问答项目、基于远监督的中文关系抽取、语音情感分析、中文ULMFiT-情感分析-文本分类-语料及模型、一个拍照做题程序、世界各国大规模人名库、一个利用有趣中文语料库 qingyun 训练出来的中文聊天机器人、中文聊天机器人seqGAN、省市区镇行政区划数据带拼音标注、教育行业新闻语料库包含自动文摘功能、开放了对话机器人-知识图谱-语义理解-自然语言处理工具及数据、中文知识图谱：基于百度百科中文页面-抽取三元组信息-构建中文知识图谱、masr: 中文语音识别-提供预训练模型-高识别率、Python音频数据增广库、中文全词覆盖BERT及两份阅读理解数据、ConvLab：开源多域端到端对话系统平台、中文自然语言处理数据集、基于最新版本rasa搭建的对话系统、基于TensorFlow和BERT的管道式实体及关系抽取、一个小型的证券知识图谱/知识库、复盘所有NLP比赛的TOP方案、OpenCLaP：多领域开源中文预训练语言模型仓库、UER：基于不同语料+编码器+目标任务的中文预训练模型仓库、中文自然语言处理向量合集、基于金融-司法领域(兼有闲聊性质)的聊天机器人、g2pC：基于上下文的汉语读音自动标记模块、Zincbase 知识图谱构建工具包、诗歌质量评价/细粒度情感诗歌语料库、快速转化「中文数字」和「阿拉伯数字」、百度知道问答语料库、基于知识图谱的问答系统、jieba_fast 加速版的jieba、正则表达式教程、中文阅读理解数据集、基于BERT等最新语言模型的抽取式摘要提取、Python利用深度学习进行文本摘要的综合指南、知识图谱深度学习相关资料整理、维基大规模平行文本语料、StanfordNLP 0.2.0：纯Python版自然语言处理包、NeuralNLP-NeuralClassifier：腾讯开源深度学习文本分类工具、端到端的封闭域对话系统、中文命名实体识别：NeuroNER vs. BertNER、新闻事件线索抽取、2019年百度的三元组抽取比赛：“科学空间队”源码、基于依存句法的开放域文本知识三元组抽取和知识库构建、中文的GPT2训练代码、ML-NLP - 机器学习(Machine Learning)NLP面试中常考到的知识点和代码实现、nlp4han:中文自然语言处理工具集(断句/分词/词性标注/组块/句法分析/语义分析/NER/N元语法/HMM/代词消解/情感分析/拼写检查、XLM：Facebook的跨语言预训练语言模型、用基于BERT的微调和特征提取方法来进行知识图谱百度百科人物词条属性抽取、中文自然语言处理相关的开放任务-数据集-当前最佳结果、CoupletAI - 基于CNN+Bi-LSTM+Attention 的自动对对联系统、抽象知识图谱、MiningZhiDaoQACorpus - 580万百度知道问答数据挖掘项目、brat rapid annotation tool: 序列标注工具、大规模中文知识图谱数据：1.4亿实体、数据增强在机器翻译及其他nlp任务中的应用及效果、allennlp阅读理解:支持多种数据和模型、PDF表格数据提取工具 、 Graphbrain：AI开源软件库和科研工具，目的是促进自动意义提取和文本理解以及知识的探索和推断、简历自动筛选系统、基于命名实体识别的简历自动摘要、中文语言理解测评基准，包括代表性的数据集&基准模型&语料库&排行榜、树洞 OCR 文字识别 、从包含表格的扫描图片中识别表格和文字、语声迁移、Python口语自然语言处理工具集(英文)、 similarity：相似度计算工具包，java编写、海量中文预训练ALBERT模型 、Transformers 2.0 、基于大规模音频数据集Audioset的音频增强 、Poplar：网页版自然语言标注工具、图片文字去除，可用于漫画翻译 、186种语言的数字叫法库、Amazon发布基于知识的人-人开放领域对话数据集 、中文文本纠错模块代码、繁简体转换 、 Python实现的多种文本可读性评价指标、类似于人名/地名/组织机构名的命名体识别数据集 、东南大学《知识图谱》研究生课程(资料)、. 英文拼写检查库 、 wwsearch是企业微信后台自研的全文检索引擎、CHAMELEON：深度学习新闻推荐系统元架构 、 8篇论文梳理BERT相关模型进展与反思、DocSearch：免费文档搜索引擎、 LIDA：轻量交互式对话标注工具 、aili - the fastest in-memory index in the East 东半球最快并发索引 、知识图谱车音工作项目、自然语言生成资源大全 、中日韩分词库mecab的Python接口库、中文文本摘要/关键词提取、汉字字符特征提取器 (featurizer)，提取汉字的特征（发音特征、字形特征）用做深度学习的特征、中文生成任务基准测评 、中文缩写数据集、中文任务基准测评 - 代表性的数据集-基准(预训练)模型-语料库-baseline-工具包-排行榜、PySS3：面向可解释AI的SS3文本分类器机器可视化工具 、中文NLP数据集列表、COPE - 格律诗编辑程序、doccano：基于网页的开源协同多语言文本标注工具 、PreNLP：自然语言预处理库、简单的简历解析器，用来从简历中提取关键信息、用于中文闲聊的GPT2模型：GPT2-chitchat、基于检索聊天机器人多轮响应选择相关资源列表(Leaderboards、Datasets、Papers)、(Colab)抽象文本摘要实现集锦(教程 、词语拼音数据、高效模糊搜索工具、NLP数据增广资源集、微软对话机器人框架 、 GitHub Typo Corpus：大规模GitHub多语言拼写错误/语法错误数据集、TextCluster：短文本聚类预处理模块 Short tex
+https://github.com/ziishaned/learn-regex/blob/master/translations/README-cn.md | learn-regex/README-cn.md at master · ziishaned/learn-regex · GitHub
+https://github.com/jaywcjlove/regexp-example | jaywcjlove/regexp-example: 正则表达式实例搜集，通过实例来学习正则表达式。
+https://regexr.com/ | RegExr: Learn, Build, & Test RegEx
+https://regex.ai/ | Regex.ai - Artificial Intelligence Regular Expression Generator
+https://geek-docs.com/regexp/regexp-tutorials/regexp-syntax.html | 正则表达式 – 语法|极客教程
+https://www.jianshu.com/p/9da960e9393b | 正则表达式回溯法原理 - 简书
+https://juejin.cn/post/7002921291845992484 | 正则表达式优化 - 避免灾难性回溯 - 掘金
+https://www.regular-expressions.info/wordboundaries.html | Regex Tutorial - \b Word Boundaries
+https://sites.google.com/site/yeyanbo/good-idea/other/regex | 正则表达式 - 他山之石 可以攻玉
+https://tool.oschina.net/uploads/apidocs/jquery/regexp.html | 正则表达式手册
+https://www.cnblogs.com/sunsky303/p/11051468.html | Golang中的RegExp正则表达式用法指南 - sunsky303 - 博客园
+https://simowce.github.io/2015/09/08/how-to-understand-b-and-b-in-regular-expression/ | 正则表达式 \b 和 \B 辨析 | Silence.Slow.Simple
+https://www.cnblogs.com/zaoansijia/p/6019619.html | 如何正确理解正则表达式中的分隔符 \b - Anan安安 - 博客园
+https://hedzr.com/golang/regexp/lets-talk-about-golang-regexp/ | 从 Golang 正则式讲起 | hzSomthing
+
+https://learn.lianglianglee.com/%e4%b8%93%e6%a0%8f/Redis%20%e6%ba%90%e7%a0%81%e5%89%96%e6%9e%90%e4%b8%8e%e5%ae%9e%e6%88%98/04%20%20%e5%86%85%e5%ad%98%e5%8f%8b%e5%a5%bd%e7%9a%84%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84%e8%af%a5%e5%a6%82%e4%bd%95%e7%bb%86%e5%8c%96%e8%ae%be%e8%ae%a1%ef%bc%9f.md | 04 内存友好的数据结构该如何细化设计？
+https://juejin.cn/user/1204720477411688 | cooper_li 的个人主页 - 动态 - 掘金
+https://www.jianshu.com/p/09c3b0835ba6 | 跳跃列表（Skip List）与其在Redis中的实现详解 - 简书
+https://segmentfault.com/a/1190000039208726 | Redis专题：万字长文详解持久化原理 - 码路印记 - SegmentFault 思否
+https://segmentfault.com/a/1190000040063422?utm_source=tag-newest | 数据库 - 42张图，带你彻底搞懂redis数据类型的底层 - 个人文章 - SegmentFault 思否
+https://segmentfault.com/a/1190000040177140 | Redis 实战篇：巧用 Bitmap 实现亿级数据统计 - Redis - SegmentFault 思否
+https://segmentfault.com/a/1190000040206818 | java - Redis数据结构底层实现 - 个人文章 - SegmentFault 思否
+https://xie.infoq.cn/article/6c3500c66c3cdee3d72b88780 | redis系列之——高可用（主从、哨兵、集群）_redis_诸葛小猿_InfoQ写作社区
+https://mp.weixin.qq.com/s?__biz=Mzg5MDU5NTM1NQ==&mid=2247509952&idx=1&sn=0162c4843762d3f9d05c67a5f4a9d1b3&source=41#wechat_redirect | 万字长文的Redis五种数据结构详解（理论+实战）| 建议收藏
+https://juejin.cn/post/7102322728048263199 | 【Redis源码系列】Redis6.0数据结构详解--编码与对象 - 掘金
+https://juejin.cn/post/7095308452116824101 | 【Redis源码系列】Redis6.0数据结构详解--SDS篇 - 掘金
+
+https://zhuanlan.zhihu.com/p/642866437 | 超硬核，基于mmap和零拷贝实现高效的内存共享 - 知乎
+https://www.ruanyifeng.com/blog/2011/12/inode.html | 理解inode - 阮一峰的网络日志
+https://github.com/leandromoreira/linux-network-performance-parameters | leandromoreira/linux-network-performance-parameters: Learn where some of the network sysctl variables fit into the Linux/Kernel network flow. Translations: 🇷🇺
+https://github.com/ArchLinuxStudio/ArchLinuxTutorial | ArchLinuxStudio/ArchLinuxTutorial: ✨Arch Linux安装使用教程 每日实时更新！ | 包含ArchLinux从安装到日常使用、娱乐、编程、媒体制作的各个方面，让Arch成为你的常用系统吧！ | 提供在线网页文档 ✨
+https://ty-chen.github.io/categories/Linux%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%86%85%E6%A0%B8%E5%AD%A6%E4%B9%A0/ | 分类: Linux操作系统内核学习 | Ty-Chen's Home
+https://arthurchiao.art/blog/linux-net-stack-zh/ | Linux 网络栈原理、监控与调优：前言（2022）
+http://blog.leanote.com/post/wkf19911118@gmail.com/shell%E7%BC%96%E7%A8%8B%E4%B9%8Bexpect | shell编程之expect用法
+https://linuxtools-rst.readthedocs.io/zh_CN/latest/tool/top.html | 8. top linux下的任务管理器 — Linux Tools Quick Tutorial
+https://segmentfault.com/a/1190000021465563 | Linux性能分析工具Perf简介 - 老王系统屋 - SegmentFault 思否
+https://blog.csdn.net/qq_42992084/article/details/124203317 | 基于官方指导安装 Arch Linux_夏沫の浅雨的博客-CSDN博客
+https://juejin.cn/post/6844904006301843464 | 从硬件入手深入理解epoll 的本质 - 掘金
+https://blog.csdn.net/OYMNCHR/article/details/124728256 | 进程间的通信方式（六种）_进程间通信_OYMN的博客-CSDN博客
+https://cloud.tencent.com/developer/article/2188691 | 深入学习IO多路复用 select/poll/epoll 实现原理 - 腾讯云开发者社区-腾讯云
+https://www.ruanyifeng.com/blog/2022/08/dns-query.html | DNS 查询原理详解 - 阮一峰的网络日志
+https://cloud.tencent.com/developer/article/1805773 | 一文搞懂 Linux 内核链表（深度分析） - 腾讯云开发者社区-腾讯云
+https://zorrozou.github.io/ | Zorro’s Linux Book | Hi, I’m zorro.
+https://segmentfault.com/a/1190000003063859 | Linux IO模式及 select、poll、epoll详解 - SegmentFault 思否
+https://blog.csdn.net/nilxin/article/details/7437671 | Linux进程状态解析之R、S、D、T、Z、X_tonyevehello的博客-CSDN博客_linux 进程s状态
+https://cn.waldorf-am-see.org/323394-how-do-i-read-the-ZNYCHE | 如何阅读qcachegrind的用户界面？ - - 2022
+http://arthurchiao.art/blog/system-call-definitive-guide-zh/ | [译] Linux 系统调用权威指南（2016）
+https://www.jianshu.com/p/f445bfeea40a | Linux 信号（signal） - 简书
+
+https://pola-rs.github.io/polars-book/user-guide/ | Introduction - Polars User Guide
+https://learn.lianglianglee.com/%E4%B8%93%E6%A0%8F/%E9%99%88%E5%A4%A9%20%C2%B7%20Rust%20%E7%BC%96%E7%A8%8B%E7%AC%AC%E4%B8%80%E8%AF%BE/21%20%E9%98%B6%E6%AE%B5%E5%AE%9E%E6%93%8D%EF%BC%881%EF%BC%89%EF%BC%9A%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E7%9A%84KV%20server-%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B.md | 21 阶段实操（1）：构建一个简单的KV server-基本流程.md
+https://www.nativebyx.dev/rust/becoming-rustacean/rust-learning-path-from-novice-to-mastery.html | Becoming Rustacean: Rust Learning Path from Novice to Mastery
+https://github.com/RustScan/RustScan/blob/master/Cargo.toml | RustScan/Cargo.toml at master · RustScan/RustScan
+https://folyd.com/blog/rust-pin-unpin/ | Rust 的 Pin 与 Unpin — Folyd
+https://www.skyzh.dev/posts/articles/2022-01-22-rust-type-exercise-in-database-executors/ | 用 Rust 做类型体操 (上篇) - Alex Chi
+
+https://www.lifewire.com/layers-of-the-osi-model-illustrated-818017 | The OSI Model Layers from Physical to Application
+https://www.zeng.dev/post/2023-k8s-api-codegen/ | 最不厌其烦的 K8s 代码生成教程 - ZengXu's BLOG
+https://cloud.redhat.com/blog/kubernetes-deep-dive-code-generation-customresources | Kubernetes Deep Dive: Code Generation for CustomResources
+https://kubernetes.io/docs/tasks/run-application/run-replicated-stateful-application/#statefulset | Run a Replicated Stateful Application | Kubernetes
+https://kubernetes.feisky.xyz/concepts/concepts | 设计理念 - Kubernetes指南
+https://support.huaweicloud.com/basics-cce/kubernetes.html | 概述_云容器引擎 CCE_Kubernetes基础知识_华为云
+https://www.orchome.com/1786 | kubernetes入门概念 - OrcHome
+https://kubernetes.io/zh-cn/docs/reference/kubectl/cheatsheet/ | kubectl 备忘单 | Kubernetes
+https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/ | Proxies and VPNs | minikube
+https://kubernetes.io/zh/docs/tutorials/hello-minikube/ | 你好，Minikube | Kubernetes
+
+https://medium.com/@briannqc/go-concurrency-visually-explained-channel-c6f88070aafa | Go Concurrency Visually Explained — Channel | by Brian NQC | Jul, 2023 | Medium
+https://www.jishuchi.com/read/gin-practice/3813 | 六、源码分析 - 深入理解 Go panic and recover - 《Golang Gin 实践》 - 技术池(jishuchi.com)
+https://colobu.com/2017/06/21/json-tricks-in-Go/ | [转]Golang 中使用 JSON 的小技巧
+https://dbwu.tech/posts/ | 归档 - 蛮荆
+https://casbin.org/zh/docs/function | 函数 | Casbin
+https://www.jianshu.com/p/a0caf5a2c598 | Go语言 gin框架集成Casbin访问权限控制 - 简书
+https://github.com/cuishuang/explain-source-code-by-chatgpt | cuishuang/explain-source-code-by-chatgpt: 👂🏻 chatgpt讲解Go核心源码中每个文件，变量，结构体，方法的作用
+https://qcrao.com/post/go-schedule-under-the-hood/ | 曹大带我学 Go（1）—— Go 调度的本质 | qcrao 的博客
+https://golang2.eddycjy.com/posts/ch6/01-pprof-1/ | Go 大杀器之性能剖析 PProf（上） | Go 语言编程之旅
+https://blog.wolfogre.com/posts/go-ppof-practice/ | golang pprof 实战 | Wolfogre's Blog
+https://mojotv.cn/algorithm/golang-quick-sort | 算法05:Golang快速排序Quick Sort | Go&Rust🦀
+https://blog.wolfogre.com/posts/go-ppof-practice/ | golang pprof 实战 | Wolfogre's Blog
+https://segmentfault.com/a/1190000019222661 | go - 实战Go内存泄露_个人文章 - SegmentFault 思否
+https://segmentfault.com/a/1190000016412013 | Golang 大杀器之性能剖析 PProf - SegmentFault 思否
+https://yqqy.top/go-mod-private-repo/#1-%E8%AE%BE%E7%BD%AEenv | go mod 添加 gitlab 私有仓库 - Yqchilde
+https://www.cnblogs.com/-wenli/p/12682477.html | Go 普通指针类型、unsafe.Pointer、uintptr之间的关系 - -零 - 博客园
+https://segmentfault.com/a/1190000037763005 | java - go语言参数传递到底是传值还是传引用？_个人文章 - SegmentFault 思否
+https://golang.design/go-questions/map/principal/ | map 的实现原理 | Go 程序员面试笔试宝典
+https://colobu.com/2016/10/19/Go-UDP-Programming/ | 深入Go UDP编程
+https://liangyaopei.github.io/2021/01/02/golang-gc-intro/ | Golang垃圾回收(GC)介绍 | Random walk to my blog
+https://cloud.tencent.com/developer/article/1916989 | 深入Go：垃圾回收的演进 - 腾讯云开发者社区-腾讯云
+http://chenyahui.github.io/articles/analysis-of-golang-timer/ | Golang 定时器底层实现深度剖析 | 编程沉思录
+https://github.com/geektutu/high-performance-go | geektutu/high-performance-go: high performance coding with golang（Go 语言高性能编程，Go 语言陷阱，Gotchas，Traps）
+https://golang.design/go-questions/channel/happens-before/ | 关于 channel 的 happened-before 有哪些 | Go Questions
+https://segmentfault.com/a/1190000040620051 | (……) Go抢占式调度 - SegmentFault 思否
+https://colobu.com/2018/12/18/dive-into-sync-mutex/ | sync.mutex 源代码分析
+https://segmentfault.com/a/1190000039855697 | (……) 这可能是最容易理解的 Go Mutex 源码剖析 - SegmentFault 思否
+https://www.zhihu.com/zvideo/1398377883908317184?playTime=543.6 | (3 封私信 / 28 条消息) 中高级 Golang 面试，这个候选人表现出乎了我的预料 - 知乎
+https://mp.weixin.qq.com/s/3gGbJaeuvx4klqcv34hmmw | Go内存分配那些事，就这么简单！
+https://refactoringguru.cn/design-patterns/catalog | 设计模式目录：22种设计模式
+https://segmentfault.com/a/1190000040670962 | (……) Go 程序崩了？煎鱼教你用 PProf 工具来救火！ - SegmentFault 思否
+
+https://zhuanlan.zhihu.com/p/330300133 | 关于队头阻塞（Head-of-Line blocking），看这一篇就足够了 - 知乎
+https://www.oschina.net/news/77354/http-get-post-different | 99%的人理解错 HTTP 中 GET 与 POST 的区别 - OSCHINA - 中文开源技术交流社区
+https://segmentfault.com/a/1190000023940344 | (……) 【网络协议】彻底弄清POST和GET请求的区别，这次你GET了么 - SegmentFault 思否
+https://zhuanlan.zhihu.com/p/38240894 | 一次完整的HTTP请求过程 - 知乎
+
+https://www.hello-algo.com/ | Hello 算法
+https://github.com/codecrafters-io/build-your-own-x#build-your-own-bittorrent-client | codecrafters-io/build-your-own-x: Master programming by recreating your favorite technologies from scratch.
+https://github.com/alaskasquirrel/Email-newsletter-RSS | alaskasquirrel/Email-newsletter-RSS: 邮箱 📧 newsletter RSS 荟萃 News
+https://github.com/pengwenwu/LeetCode-With-Go/blob/master/kit/02_linkedlist/SingleLinkedList.go | LeetCode-With-Go/kit/02_linkedlist/SingleLinkedList.go at master · pengwenwu/LeetCode-With-Go
+https://docs.github.com/zh/get-started/using-git/using-git-rebase-on-the-command-line | 在命令行中使用 Git rebase - GitHub 文档
+https://github.com/geekxh/hello-algorithm | geekxh/hello-algorithm: 🌍 针对小白的算法训练 | 包括四部分：①.大厂面经 ②.力扣图解 ③.千本开源电子书 ④.百张技术思维导图（项目花了上百小时，希望可以点 star 支持，🌹感谢~）点击下方网站，马上开始刷题！
+https://github.com/lifei6671/interview-go | lifei6671/interview-go: golang面试题集合
+https://github.com/xiaobaiTech/golangFamily | xiaobaiTech/golangFamily: 【超全golang面试题合集+golang学习指南+golang知识图谱+入门成长路线】 一份涵盖大部分golang程序员所需要掌握的核心知识。常用第三方库(mysql,mq,es,redis等)+机器学习库+算法库+游戏库+开源框架+自然语言处理nlp库+网络库+视频库+微服务框架+视频教程+音频音乐库+图形图片库+物联网库+地理位置信息+嵌入式脚本库+编译器库+数据库+金融库+电子邮件库+电子书籍+分词+数据结构+设计模式+去html tag标签等+go学习+go面试+计算机网络基础+图解网络+操作系统面试题+数据库面试题+面试题合集
+
+https://mp.weixin.qq.com/s/wjrcO2Ej7BEThWVsCnXEtA | Chrome 浏览器运行原理你了解多少？
+https://zhuanlan.zhihu.com/p/554203671 | 新来个技术总监，把 RabbitMQ 讲的那叫一个透彻，佩服！ - 知乎
+https://www.promptingguide.ai/zh | 提示工程指南 | Prompt Engineering Guide
+https://doc.hcs.huawei.com/zh-cn/devg/dws/dws_04_0674.html | 在线资料平台
+https://juejin.cn/user/2084329777035246 | 石杉的架构笔记 的个人主页 - 动态 - 掘金
+https://cloud.tencent.com/developer/article/1860632 | 一文看懂｜分布式系统之CAP理论 - 腾讯云开发者社区-腾讯云
+https://cloud.tencent.com/developer/article/1683364 | 面向对象之组合VS继承：继承过时了？ - 腾讯云开发者社区-腾讯云
+https://nginx.org/en/docs/control.html | Controlling nginx
+https://segmentfault.com/a/1190000023648948 | PHP Opcache 配置优化实战 - SegmentFault 思否
+https://www.awaimai.com/2684.html | PHP Opcache工作原理 - 歪麦博客
+https://juejin.cn/post/6983639186146328607 | 面试必备！TCP协议经典十五连问！ - 掘金
+https://segmentfault.com/a/1190000022144695 | 面试准备 TCP 知识，看这一篇就够了 - SegmentFault 思否
+https://int64.ink/blog/etcd_%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3etcd%E7%A7%9F%E7%BA%A6lease%E5%AE%9E%E7%8E%B0/ | 深入理解etcd租约Lease实现
+https://segmentfault.com/a/1190000022037316 | RabbitMQ面试题集锦（精选）（另附思维导图） - SegmentFault 思否
+https://juejin.cn/post/6996134538887839780 | RabbitMQ四种交换机类型 - 掘金
+https://segmentfault.com/a/1190000023565685 | MySQL explain 应用详解(吐血整理🤩) - SegmentFault 思否
+https://dbaplus.cn/news-159-2326-1.html | 玩转不同业务场景，这些RabbitMQ特性会是得力助攻 - 分布式 - dbaplus社群：围绕Data、Blockchain、AiOps的企业级专业社群。技术大咖、原创干货，每天精品原创文章推送，每周线上技术分享，每月线下技术沙龙。
+https://www.musicpoet.top/20200409/7-major-design-principles-of-oop.html | OOP设计7大设计原则总结 | 打马的部落格
+https://www.jianshu.com/p/c2ec5f06cf1a | Git Reset 三种模式 - 简书
+https://cloud.tencent.com/developer/article/1650116 | 设计模式概念和七大原则 - 云+社区 - 腾讯云
+https://segmentfault.com/a/1190000038432417 | (……) RabbitMQ集群-镜像模式搭建 - SegmentFault 思否
+http://ningg.top/inside-mysql-master-slave-delay/ | MySQL 技术内幕：主从同步和主从延时 | NingG 个人博客
+https://juejin.cn/post/6964531365643550751 | 美团二面：Redis与MySQL双写一致性如何保证？ - 掘金
+https://cloud.tencent.com/developer/article/1876605 | Linux下CPU使用率过高的排查方法 - 云+社区 - 腾讯云
+https://cloud.tencent.com/developer/article/1683607 | 使用xdebug对php做性能分析调优 - 云+社区 - 腾讯云
+https://www.jianshu.com/p/c69e368de756 | PHP性能分析——xhprof - 简书
+https://studygolang.com/articles/26899 | 面试：反转链表 - Go语言中文网 - Golang中文社区
+https://zhuanlan.zhihu.com/p/54988753 | 说说不知道的Golang中参数传递 - 知乎
+https://xiaomi-info.github.io/2020/01/02/distributed-transaction/ | 分布式事务，这一篇就够了 | 小米信息部技术团队
+https://segmentfault.com/a/1190000040321750 | (……) 分布式事务最经典的七种解决方案 - SegmentFault 思否
+https://cloud.tencent.com/developer/article/1722004 | 详解nohup /dev/null 2>&1 含义的使用 - 云+社区 - 腾讯云
+https://tech.meituan.com/2018/10/11/fe-security-csrf.html | 前端安全系列（二）：如何防止CSRF攻击？ - 美团技术团队
+https://tech.meituan.com/2018/09/27/fe-security.html | 前端安全系列（一）：如何防止XSS攻击？ - 美团技术团队
+https://www.ruanyifeng.com/blog/2014/02/ssl_tls.html | SSL/TLS协议运行机制的概述 - 阮一峰的网络日志
+https://www.ruanyifeng.com/blog/2014/09/illustration-ssl.html | 图解SSL/TLS协议 - 阮一峰的网络日志
+https://zq99299.github.io/mq-tutorial/rabbitmq-ac/03/05.html#%E7%A1%AE%E8%AE%A4 | 消费端的确认与拒绝 | MQ 系列教程（笔记）
+https://www.bookstack.cn/read/qcrao-Go-Questions/channel-%E4%BB%8E%20channel%20%E6%8E%A5%E6%94%B6%E6%95%B0%E6%8D%AE%E7%9A%84%E8%BF%87%E7%A8%8B%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84.md | channel - 从 channel 接收数据的过程是怎样的 - 《Go 语言问题集(Go Questions)》 - 书栈网 · BookStack
+https://developer.mozilla.org/zh-CN/docs/Web/HTTP | HTTP | MDN
+
+https://roadmap.sh/ | Developer Roadmaps - roadmap.sh
+https://www.codesimplicity.com/book/ | Code Simplicity: The Fundamentals of Software (Free eBook) » Code Simplicity
+https://www.hello-algo.com/ | Hello 算法
+https://www.bookstack.cn/read/qcrao-Go-Questions/channel-%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E9%97%AD%20channel.md | channel - 如何优雅地关闭 channel - 《Go 语言问题集(Go Questions)》 - 书栈网 · BookStack
+https://doc.rust-lang.org/reference/attributes/diagnostics.html | Diagnostics - The Rust Reference
+https://github.com/pretzelhammer/rust-blog/blob/master/posts/common-rust-lifetime-misconceptions.md | rust-blog/common-rust-lifetime-misconceptions.md at master · pretzelhammer/rust-blog
+https://course.rs/tokio/shared-state.html | 共享状态 - Rust语言圣经(Rust教程 Rust Course)
+https://vim.rtorr.com/lang/zh_cn | Vim Cheat Sheet
+https://refactoringguru.cn/design-patterns/builder | 建造者设计模式（生成器模式）
+https://time.geekbang.org/column/article/41013 | 06 | 链表（上）：如何实现LRU缓存淘汰算法?
+https://github.com/wangzheng0822/algo/blob/master/rust/07_linkedlist/linked_list_cycle.rs | algo/linked_list_cycle.rs at master · wangzheng0822/algo
+https://docs.rs/clap/3.0.14/clap/trait.Parser.html | Parser in clap - Rust
+https://github.com/clap-rs/clap/blob/v3.0.14/examples/derive_ref/README.md | clap/README.md at v3.0.14 · clap-rs/clap
+https://www.bilibili.com/video/BV1Q34y1y7DJ?spm_id_from=333.999.0.0 | Rust crates 大巡礼：Axum(1) - 自定义 extractor_哔哩哔哩_bilibili
+
