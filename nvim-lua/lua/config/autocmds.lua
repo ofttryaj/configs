@@ -56,3 +56,5 @@ end
 vim.api.nvim_create_autocmd("BufWritePost", { pattern = "*", command = [[if filereadable("Makefile") | make | endif]] })
 vim.api.nvim_create_autocmd("FileType", { pattern = "json", command = [[syntax match Comment +\/\/.\+$+]] })
 
+vim.cmd("autocmd FileType go nmap <Leader>gc :lua require('go.comment').gen()<CR>")
+

@@ -20,6 +20,7 @@ require("lazy").setup({
   require("plugins.autocomplete").config,
   require("plugins.lspconfig").config,
   require("plugins.go"),
+  require("plugins.rust"),
   require("plugins.joshuto"),
   require("plugins.snippet"),
   require("plugins.treesitter"),

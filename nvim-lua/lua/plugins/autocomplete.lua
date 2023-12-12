@@ -81,20 +81,6 @@ local setCompHL = function()
 	vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
 end
 
-local moveCursorBeforeComma = function()
-	if vim.bo.filetype ~= "dart" then
-		return
-	end
-	vim.defer_fn(function()
-		local line = vim.api.nvim_get_current_line()
-		local row, col = unpack(vim.api.nvim_win_get_cursor(0))
-		local char = line:sub(col - 2, col)
-		if char == ": ," then
-			vim.api.nvim_win_set_cursor(0, { row, col - 1 })
-		end
-	end, 100)
-end
-
 M.configfunc = function()
 	local lspkind = require("lspkind")
 	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
@@ -188,10 +174,8 @@ M.configfunc = function()
 				i = function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
-						moveCursorBeforeComma()
 					elseif has_words_before() then
 						cmp.complete()
-						moveCursorBeforeComma()
 					else
 						fallback()
 					end
@@ -201,7 +185,6 @@ M.configfunc = function()
 				i = function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
-						moveCursorBeforeComma()
 					else
 						fallback()
 					end
