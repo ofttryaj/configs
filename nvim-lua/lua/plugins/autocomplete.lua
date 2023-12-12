@@ -133,6 +133,7 @@ M.configfunc = function()
 		},
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
+			{ name = "ultisnips" },
 			{ name = "buffer" },
 		}, {
 			{ name = "path" },
@@ -140,7 +141,7 @@ M.configfunc = function()
 			{ name = "calc" },
 		}),
 		mapping = cmp.mapping.preset.insert({
-			['<C-o>'] = cmp.mapping.complete(),
+			['<CR>'] = cmp.mapping.confirm({ select = true }),
 			["<c-e>"] = cmp.mapping(
 				function()
 					cmp_ultisnips_mappings.compose { "expand", "jump_forwards" } (function() end)
@@ -161,7 +162,7 @@ M.configfunc = function()
 			}),
 			['<c-y>'] = cmp.mapping({ i = function(fallback) fallback() end }),
 			['<c-u>'] = cmp.mapping({ i = function(fallback) fallback() end }),
-			['<CR>'] = cmp.mapping({
+			['<C-o>'] = cmp.mapping({
 				i = function(fallback)
 					if cmp.visible() and cmp.get_active_entry() then
 						cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = false })
