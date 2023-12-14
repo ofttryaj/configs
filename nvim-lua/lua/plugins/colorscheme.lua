@@ -3,15 +3,17 @@ return {
 	-- "craftzdog/solarized-osaka.nvim",
 	-- "theniceboy/nvim-deus",
 	-- "projekt0n/github-nvim-theme",
-	-- "folke/tokyonight.nvim",
-	"rebelot/kanagawa.nvim",
-	-- "RRethy/nvim-base16",
+	-- "rebelot/kanagawa.nvim",
+	"RRethy/nvim-base16",
+	-- dir = vim.fn.stdpath("config") .. "/colors",
 	lazy = false,
     config = true,
 	priority = 1000,
 	config = function()
-        require("kanagawa").setup()
+		-- vim.g.base16_shell_path = vim.fn.stdpath("config") .. "/base16-shell/scripts/"
 		-- vim.cmd([[colorscheme github_dark_dimmed]])
-		vim.cmd([[colorscheme kanagawa-wave]])
+	    -- require("kanagawa").setup()
+		-- vim.cmd([[colorscheme kanagawa]])
+		vim.cmd([[colorscheme base16-gruvbox-dark-hard]])
 	end,
 }

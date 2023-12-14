@@ -23,13 +23,13 @@ M.config = {
 				},
 			},
 			{ 'neovim/nvim-lspconfig' },
-			{
-				'williamboman/mason.nvim',
-				build = function()
-					vim.cmd([[MasonInstall]])
-				end,
-			},
-			{ 'williamboman/mason-lspconfig.nvim' },
+			--{
+			-- 	'williamboman/mason.nvim',
+			--	build = function()
+			--		vim.cmd([[MasonInstall]])
+			--	end,
+			--},
+			--{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{
 				'j-hui/fidget.nvim',
@@ -46,7 +46,9 @@ M.config = {
 		},
 
 		config = function()
-			local lsp = require('lsp-zero').preset({})
+			local lsp = require('lsp-zero').preset({
+				-- float_border = 'bounded',
+			})
 			M.lsp = lsp
 
 			lsp.ensure_installed({
@@ -56,6 +58,7 @@ M.config = {
 			-- F.configureInlayHints()
 
 			lsp.on_attach(function(client, bufnr)
+				-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 				lsp.default_keymaps({ buffer = bufnr })
 				client.server_capabilities.semanticTokensProvider = nil
 				require("plugins.autocomplete").configfunc()
@@ -91,8 +94,6 @@ M.config = {
 					-- timeout_ms = 10000,
 				},
 			})
-
-
 			local lspconfig = require('lspconfig')
 
 			require("config.lsp.lua").setup(lspconfig, lsp)
@@ -180,7 +181,7 @@ F.configureDocAndSignature = function()
 		vim.lsp.handlers.signature_help, {
 			-- silent = true,
 			focusable = false,
-			border = "rounded",
+			border = "none",
 			zindex = 60,
 		}
 	)
