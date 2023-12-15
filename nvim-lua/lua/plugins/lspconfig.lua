@@ -94,6 +94,7 @@ M.config = {
 					-- timeout_ms = 10000,
 				},
 			})
+			vim.lsp.set_log_level("off")
 			local lspconfig = require('lspconfig')
 
 			require("config.lsp.lua").setup(lspconfig, lsp)
