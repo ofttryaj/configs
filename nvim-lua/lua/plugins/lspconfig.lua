@@ -98,6 +98,8 @@ M.config = {
 			local lspconfig = require('lspconfig')
 
 			require("config.lsp.lua").setup(lspconfig, lsp)
+			require("config.lsp.python").setup(lspconfig, lsp)
+			require("config.lsp.csharp").setup(lspconfig, lsp)
 
 			lsp.setup()
 			require("fidget").setup({})
@@ -186,27 +188,27 @@ F.configureDocAndSignature = function()
 			zindex = 60,
 		}
 	)
-	local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-	vim.api.nvim_create_autocmd({ "CursorHold" }, {
-		pattern = "*",
-		callback = function()
-			vim.diagnostic.open_float({}, {
-				scope = "cursor",
-				focusable = false,
-				zindex = 10,
-				close_events = {
-					"CursorMoved",
-					"CursorMovedI",
-					"BufHidden",
-					"InsertCharPre",
-					"InsertEnter",
-					"WinLeave",
-					"ModeChanged",
-				},
-			})
-		end,
-		group = group,
-	})
+	-- local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
+	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
+	-- 	pattern = "*",
+	-- 	callback = function()
+	-- 		vim.diagnostic.open_float({}, {
+	-- 			scope = "cursor",
+	-- 			focusable = false,
+	-- 			zindex = 10,
+	-- 			close_events = {
+	-- 				"CursorMoved",
+	-- 				"CursorMovedI",
+	-- 				"BufHidden",
+	-- 				"InsertCharPre",
+	-- 				"InsertEnter",
+	-- 				"WinLeave",
+	-- 				"ModeChanged",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- 	group = group,
+	-- })
 end
 
 
@@ -231,6 +233,7 @@ F.configureKeybinds = function()
 			vim.keymap.set('n', '<leader>tr', ':Trouble<cr>', opts)
 			vim.keymap.set('n', '<leader>-', vim.diagnostic.goto_prev, opts)
 			vim.keymap.set('n', '<leader>=', vim.diagnostic.goto_next, opts)
+			vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float, opts)
 		end
 	})
 end
