@@ -42,6 +42,7 @@ M.config = {
 				"lvimuser/lsp-inlayhints.nvim",
 				branch = "anticonceal",
 			},
+			{ "Hoffs/omnisharp-extended-lsp.nvim", lazy = true },
 			-- "mjlbach/lsp_signature.nvim",
 		},
 

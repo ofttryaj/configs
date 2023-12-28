@@ -27,4 +27,5 @@ require("lazy").setup({
 	require("plugins.snippet"),
 	require("plugins.treesitter"),
 	require("plugins.telescope"),
+	require("plugins.conform"),
 })
