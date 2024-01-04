@@ -15,6 +15,7 @@ vim.opt.rtp:prepend(lazypath)
 vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { noremap = true })
 
 require("lazy").setup({
+	require("plugins.conform"),
 	require("plugins.fzf"),
 	require("plugins.colorscheme"),
 	require("plugins.statusline"),
@@ -27,5 +28,4 @@ require("lazy").setup({
 	require("plugins.snippet"),
 	require("plugins.treesitter"),
 	require("plugins.telescope"),
-	require("plugins.conform"),
 })
