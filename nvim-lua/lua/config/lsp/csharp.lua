@@ -1,4 +1,5 @@
 return {
+	-- https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md#omnisharp
 	setup = function(lspconfig, lsp)
 		lspconfig.omnisharp.setup({
 			cmd = { "dotnet", "/Users/jon/Downloads/omnisharp-osx-x64-net6.0/OmniSharp.dll" },
