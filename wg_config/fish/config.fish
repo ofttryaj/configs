@@ -6,6 +6,7 @@ set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -g fish_user_paths ~/dev/soft/protoc3.16/bin $fish_user_paths
 set -g fish_user_paths /Users/jon/.local/bin $fish_user_paths
 set -g fish_user_paths /usr/local/opt/postgresql@15/bin $fish_user_paths
+set -g fish_user_paths /Users/jon/.dotnet/tools $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/php/bin" $fish_user_paths
 # set -g fish_user_paths "/usr/local/opt/php/sbin" $fish_user_paths
 set LANG zh_CN.UTF-8
