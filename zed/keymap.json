@@ -1,0 +1,20 @@
+[
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "ctrl-j": ["vim::SwitchMode", "Normal"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "H": ["workspace::SendKeystrokes", "^"]
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && !menu",
+    "bindings": {
+      "L": ["workspace::SendKeystrokes", "$"]
+    }
+  }
+]

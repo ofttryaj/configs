@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.g.localvimrc_ask = 0
-vim.g.python3_host_prog = "/usr/local/bin/python3"
-vim.g.base16_shell_path = "/Users/jon/.config/base16-shell/scripts/"
+vim.g.python3_host_prog = "/usr/bin/python3"
 
 local km = vim.keymap
 local opts = { noremap = true }
@@ -31,6 +30,14 @@ km.set("n", "sh", "<C-w>t<C-w>K", opts)
 
 km.set({ "n", "i", "v", "s", "x", "c", "o", "l", "t" }, "<C-c>", "<Esc>", opts)
 km.set("i", "<C-j>", '<Esc>', opts)
+km.set('i', '<C-j>', '<Esc>')
+km.set('v', '<C-j>', '<Esc>')
+km.set('s', '<C-j>', '<Esc>')
+km.set('x', '<C-j>', '<Esc>')
+km.set('c', '<C-j>', '<Esc>')
+km.set('o', '<C-j>', '<Esc>')
+km.set('l', '<C-j>', '<Esc>')
+km.set('t', '<C-j>', '<Esc>')
 km.set({ "n", "v" }, "<C-h>", ":nohlsearch<CR>", opts)
 
 km.set("n", "n", "nzz", opts)

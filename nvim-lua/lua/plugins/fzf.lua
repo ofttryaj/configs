@@ -21,4 +21,3 @@ return {
 		fzf.setup()
 	end
 }
-

@@ -23,13 +23,6 @@ M.config = {
 				},
 			},
 			{ 'neovim/nvim-lspconfig' },
-			--{
-			-- 	'williamboman/mason.nvim',
-			--	build = function()
-			--		vim.cmd([[MasonInstall]])
-			--	end,
-			--},
-			--{ 'williamboman/mason-lspconfig.nvim' },
 			{ 'hrsh7th/cmp-nvim-lsp' },
 			{
 				'j-hui/fidget.nvim',
@@ -68,7 +61,7 @@ M.config = {
 				end
 				vim.diagnostic.config({
 					severity_sort = true,
-					underline = true,
+					underline = false,
 					signs = true,
 					virtual_text = false,
 					update_in_insert = false,
@@ -99,8 +92,8 @@ M.config = {
 			local lspconfig = require('lspconfig')
 
 			require("config.lsp.lua").setup(lspconfig, lsp)
-			require("config.lsp.python").setup(lspconfig, lsp)
-			require("config.lsp.csharp").setup(lspconfig, lsp)
+			-- require("config.lsp.python").setup(lspconfig, lsp)
+			-- require("config.lsp.csharp").setup(lspconfig, lsp)
 
 			lsp.setup()
 			require("fidget").setup({})
