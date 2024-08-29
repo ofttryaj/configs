@@ -9,7 +9,7 @@ M.config = {
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v2.x',
+		branch = 'v4.x',
 		dependencies = {
 			{
 				"folke/trouble.nvim",
@@ -40,75 +40,65 @@ M.config = {
 		},
 
 		config = function()
-			local lsp = require('lsp-zero').preset({
-				-- float_border = 'bounded',
-			})
-			M.lsp = lsp
-
-			lsp.ensure_installed({
-				'gopls',
-			})
-
+			local lsp_zero = require('lsp-zero')
+			M.lsp_zero = lsp_zero
 			-- F.configureInlayHints()
 
-			lsp.on_attach(function(client, bufnr)
-				-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-				lsp.default_keymaps({ buffer = bufnr })
-				client.server_capabilities.semanticTokensProvider = nil
-				require("plugins.autocomplete").configfunc()
-				if vim.bo[bufnr].filetype ~= "dart" then
-					require("lsp_signature").on_attach(F.signature_config, bufnr)
-				end
-				vim.diagnostic.config({
-					severity_sort = true,
-					underline = false,
-					signs = true,
-					virtual_text = false,
-					update_in_insert = false,
-					float = true,
+			local lsp_attach = function(client, bufnr)
+                local opts = {buffer = bufnr}
+
+                lsp_zero.default_keymaps({buffer = bufnr})
+
+                client.server_capabilities.semanticTokensProvider = nil
+                require("plugins.autocomplete").configfunc()
+
+                vim.keymap.set('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', opts)
+                vim.keymap.set('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', opts)
+                vim.keymap.set('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', opts)
+                vim.keymap.set('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', opts)
+                vim.keymap.set('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
+                vim.keymap.set('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
+                vim.keymap.set('n', '<c-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+                vim.keymap.set('n', '<leader>rn', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
+                vim.keymap.set({'n', 'x'}, '<leader>fr', '<cmd>lua vim.lsp.buf.format({async = true})<cr>', opts)
+                vim.keymap.set('n', '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
+               	vim.keymap.set('n', '[', vim.diagnostic.goto_prev, opts)
+    			vim.keymap.set('n', ']', vim.diagnostic.goto_next, opts)
+    			vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float, opts)
+                vim.diagnostic.config({
+   					severity_sort = true,
+   					underline = false,
+   					signs = true,
+   					virtual_text = false,
+   					update_in_insert = false,
+   					float = true,
 				})
-			end)
+            end
 
-			lsp.set_sign_icons({
-				error = '✘',
-				warn = '▲',
-				hint = '⚑',
-				info = '»'
-			})
+            lsp_zero.extend_lspconfig({
+                sign_text = {
+                    error = '✘',
+                    warn = '▲',
+                    hint = '⚑',
+                    info = '»',
+                },
+                float_border = 'rounded',
+                lsp_attach = lsp_attach,
+                capabilities = require('cmp_nvim_lsp').default_capabilities(),
+            })
 
-			lsp.set_server_config({
-				on_init = function(client)
-					client.server_capabilities.semanticTokensProvider = nil
-				end,
-			})
-
-			lsp.format_on_save({
-				format_opts = {
-					-- async = false,
-					-- timeout_ms = 10000,
-				},
-			})
-			vim.lsp.set_log_level("off")
-			local lspconfig = require('lspconfig')
-
-			require("config.lsp.lua").setup(lspconfig, lsp)
+            local lspconfig = require('lspconfig')
+			require("config.lsp.lua").setup(lspconfig, lsp_zero)
 			-- require("config.lsp.python").setup(lspconfig, lsp)
 			-- require("config.lsp.csharp").setup(lspconfig, lsp)
 
-			lsp.setup()
-			require("fidget").setup({})
+			vim.lsp.set_log_level("off")
 
-			local lsp_defaults = lspconfig.util.default_config
-			lsp_defaults.capabilities = vim.tbl_deep_extend(
-				'force',
-				lsp_defaults.capabilities,
-				require('cmp_nvim_lsp').default_capabilities()
-			)
+			require("fidget").setup({})
 
 			-- require('nvim-dap-projects').search_project_config()
 
 			F.configureDocAndSignature()
-			F.configureKeybinds()
 
 			local format_on_save_filetypes = {
 				dart = true,
@@ -203,33 +193,6 @@ F.configureDocAndSignature = function()
 	-- 	end,
 	-- 	group = group,
 	-- })
-end
-
-
-F.configureKeybinds = function()
-	vim.api.nvim_create_autocmd('LspAttach', {
-		desc = 'LSP actions',
-		callback = function(event)
-			local opts = { buffer = event.buf, noremap = true, nowait = true }
-
-			vim.keymap.set('n', 'K', vim.lsp.buf.hover, opts)
-			vim.keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-			vim.keymap.set('n', 'gD', ':tab sp<CR><cmd>lua vim.lsp.buf.definition()<cr>', opts)
-			vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
-			vim.keymap.set('n', 'go', vim.lsp.buf.type_definition, opts)
-			vim.keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-			vim.keymap.set('i', '<c-k>', vim.lsp.buf.signature_help, opts)
-			vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)
-			-- vim.keymap.set({ 'n', 'x' }, '<leader>f', function() vim.lsp.buf.format({ async = true }) end, opts)
-			vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, opts)
-			-- vim.keymap.set('x', '<leader>aw', vim.lsp.buf.range_code_action, opts)
-			-- vim.keymap.set('x', "<leader>,", vim.lsp.buf.range_code_action, opts)
-			vim.keymap.set('n', '<leader>tr', ':Trouble<cr>', opts)
-			vim.keymap.set('n', '<leader>-', vim.diagnostic.goto_prev, opts)
-			vim.keymap.set('n', '<leader>=', vim.diagnostic.goto_next, opts)
-			vim.keymap.set('n', '<leader>f', vim.diagnostic.open_float, opts)
-		end
-	})
 end
 
 return M

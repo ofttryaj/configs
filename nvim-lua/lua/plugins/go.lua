@@ -8,12 +8,24 @@ return {
     config = function()
         require("go").setup({
             disable_defaults = false,
+            diagnostic = false,
             max_line_len = 100,
-            lsp_cfg = true,
+            lsp_cfg = false,
             lsp_inlay_hints = {
                 enable = false,
             },
         })
+        local cfg = require 'go.lsp'.config()
+        cfg.settings.gopls.hints = {
+            assignVariableTypes = false,
+            compositeLiteralFields = false,
+            compositeLiteralTypes = false,
+            constantValues = false,
+            functionTypeParameters = false,
+            parameterNames = false,
+            rangeVariableTypes = false,
+        }
+        require('lspconfig').gopls.setup(cfg)
         local format_sync_grp = vim.api.nvim_create_augroup("GoImport", {})
         vim.api.nvim_create_autocmd("BufWritePre", {
             pattern = "*.go",
