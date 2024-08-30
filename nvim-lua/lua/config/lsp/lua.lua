@@ -1,5 +1,5 @@
 return {
-	setup = function(lspconfig, lsp)
+	setup = function(lspconfig)
 		require("neodev").setup({
 			lspconfig = true,
 			override = function()

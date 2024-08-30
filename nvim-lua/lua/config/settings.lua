@@ -7,9 +7,9 @@ o.number = true
 o.relativenumber = true
 o.completeopt = "menuone,noinsert,noselect"
 if vim.fn.has("nvim") == 1 then
-    o.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor"
-    o.inccommand = "nosplit"
-    vim.keymap.set("n", "<C-q>", ":confirm qall<CR>", { noremap = true })
+	o.guicursor = "n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor"
+	o.inccommand = "nosplit"
+	vim.keymap.set("n", "<C-q>", ":confirm qall<CR>", { noremap = true })
 end
 o.termguicolors = true
 o.background = "dark"
@@ -66,10 +66,16 @@ o.shortmess = o.shortmess .. "c"
 o.listchars = "tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•"
 o.sidescrolloff = 8
 o.updatetime = 300
+
+
+o.conceallevel = 0
+-- o.showtabline = 3
+-- o.laststatus = 3
+
 -- o.t_Co = 256
 if vim.fn.has("nvim") == 1 then
-    o.grepformat = "%f:%l:%c:%m"
-    o.grepprg = "rg --vimgrep"
+	o.grepformat = "%f:%l:%c:%m"
+	o.grepprg = "rg --vimgrep"
 end
 
 vim.cmd([[hi Normal ctermbg=NONE]])
@@ -84,4 +90,4 @@ local bools = vim.api.nvim_get_hl(0, { name = 'Boolean' })
 vim.api.nvim_set_hl(0, 'Comment', bools)
 local marked = vim.api.nvim_get_hl(0, { name = 'PMenu' })
 vim.api.nvim_set_hl(0, 'LspSignatureActiveParameter',
-    { fg = marked.fg, bg = marked.bg, ctermfg = marked.ctermfg, ctermbg = marked.ctermbg, bold = true })
+	{ fg = marked.fg, bg = marked.bg, ctermfg = marked.ctermfg, ctermbg = marked.ctermbg, bold = true })
