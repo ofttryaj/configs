@@ -67,6 +67,8 @@ o.listchars = "tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•"
 o.sidescrolloff = 8
 o.updatetime = 300
 
+vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+
 
 o.conceallevel = 0
 -- o.showtabline = 3

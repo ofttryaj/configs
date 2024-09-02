@@ -4,7 +4,6 @@ vim.g.python3_host_prog = "/usr/bin/python3"
 
 local km = vim.keymap
 local opts = { noremap = true }
-local ropts = { remap = true }
 
 km.set("n", "<leader>m", "ct_", opts)
 km.set("n", "<leader>n", "ct-", opts)
@@ -24,6 +23,13 @@ km.set("n", "<leader>p", [[:read !xsel --clipboard --output<cr>]], opts)
 km.set("n", "<leader>c", [[:w !xsel -ib<cr><cr>]], opts)
 km.set("n", "<leader>o", [[:e <C-R>=expand("%:p:h") . "/" <CR>]], opts)
 km.set("n", "<leader><leader>", "<C-^>", opts)
+
+-- window management
+km.set("n", "<leader>sv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
+km.set("n", "<leader>sh", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
+km.set("n", "<leader>se", "<C-w>=", { desc = "Make splits equal size" })      -- make split windows equal width & height
+km.set("n", "<leader>sx", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
+
 
 km.set("n", "sv", "<C-w>t<C-w>H", opts)
 km.set("n", "sh", "<C-w>t<C-w>K", opts)
@@ -64,5 +70,3 @@ km.set("n", "<right>", ":bn<CR>", opts)
 km.set("n", "j", "gj", opts)
 km.set("n", "k", "gk", opts)
 km.set({ "n", "i" }, "<F1>", "<Esc>", opts)
-
-km.set("n", "R", ":Joshuto<CR>", opts)
