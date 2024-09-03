@@ -1,6 +1,7 @@
 return {
-	setup = function(lspconfig)
+	setup = function(lspconfig, capabilities)
 		lspconfig.basedpyright.setup {
+			capabilities = capabilities,
 			root_dir = function(...)
 				local util = require "lspconfig.util"
 				return util.find_git_ancestor(...)

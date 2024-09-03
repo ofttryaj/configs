@@ -37,6 +37,9 @@ M.config = {
 			end,
 		}
 	},
+	config = function()
+		M.configfunc()
+	end
 }
 
 local setCompHL = function()
@@ -137,7 +140,6 @@ M.configfunc = function()
 			{ name = "nvim_lsp" },
 			{ name = "ultisnips" },
 			{ name = "buffer" },
-		}, {
 			{ name = "path" },
 			{ name = "nvim_lua" },
 			{ name = "calc" },

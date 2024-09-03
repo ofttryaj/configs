@@ -1,11 +1,12 @@
 return {
-	setup = function(lspconfig)
+	setup = function(lspconfig, capabilities)
 		require("neodev").setup({
 			lspconfig = true,
 			override = function()
 			end
 		})
 		lspconfig.lua_ls.setup({
+			capabilities = capabilities,
 			on_attach = function()
 			end,
 			settings = {
