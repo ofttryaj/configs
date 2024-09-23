@@ -74,6 +74,10 @@ o.conceallevel = 0
 -- o.showtabline = 3
 -- o.laststatus = 3
 
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
 -- o.t_Co = 256
 if vim.fn.has("nvim") == 1 then
 	o.grepformat = "%f:%l:%c:%m"
