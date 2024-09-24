@@ -9,6 +9,10 @@ local limitStr = function(str)
 	return str
 end
 
+local feedkey = function(key, mode)
+	vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+end
+
 -- local label_comparator = function(entry1, entry2)
 -- 	return entry1.completion_item.label < entry2.completion_item.label
 -- end
@@ -30,72 +34,36 @@ M.config = {
 			end
 		},
 		{
-			"quangnguyen30192/cmp-nvim-ultisnips",
-			config = function()
-				-- optional call to setup (see customization section)
-				require("cmp_nvim_ultisnips").setup {}
-			end,
-		}
+			"saadparwaiz1/cmp_luasnip",
+			dependencies = {
+				"L3MON4D3/LuaSnip",
+				dependencies = {
+					"rafamadriz/friendly-snippets",
+				}
+			}
+		},
 	},
 	config = function()
 		M.configfunc()
 	end
 }
 
-local setCompHL = function()
-	local fgdark = "#2E3440"
-
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#82AAFF", bg = "NONE", bold = true })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { fg = "#82AAFF", bg = "NONE", bold = true })
-	vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { fg = "#7E8294", bg = "NONE", strikethrough = true })
-
-	vim.api.nvim_set_hl(0, "CmpItemMenu", { fg = "#808080", bg = "NONE", italic = true })
-	vim.api.nvim_set_hl(0, "CmpItemKindField", { fg = fgdark, bg = "#B5585F" })
-	vim.api.nvim_set_hl(0, "CmpItemKindProperty", { fg = fgdark, bg = "#B5585F" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEvent", { fg = fgdark, bg = "#B5585F" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindText", { fg = fgdark, bg = "#9FBD73" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEnum", { fg = fgdark, bg = "#9FBD73" })
-	vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { fg = fgdark, bg = "#9FBD73" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindConstant", { fg = fgdark, bg = "#D4BB6C" })
-	vim.api.nvim_set_hl(0, "CmpItemKindConstructor", { fg = fgdark, bg = "#D4BB6C" })
-	vim.api.nvim_set_hl(0, "CmpItemKindReference", { fg = fgdark, bg = "#D4BB6C" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindFunction", { fg = fgdark, bg = "#A377BF" })
-	vim.api.nvim_set_hl(0, "CmpItemKindStruct", { fg = fgdark, bg = "#A377BF" })
-	vim.api.nvim_set_hl(0, "CmpItemKindClass", { fg = fgdark, bg = "#A377BF" })
-	vim.api.nvim_set_hl(0, "CmpItemKindModule", { fg = fgdark, bg = "#A377BF" })
-	vim.api.nvim_set_hl(0, "CmpItemKindOperator", { fg = fgdark, bg = "#A377BF" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindVariable", { fg = fgdark, bg = "#cccccc" })
-	vim.api.nvim_set_hl(0, "CmpItemKindFile", { fg = fgdark, bg = "#7E8294" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindUnit", { fg = fgdark, bg = "#D4A959" })
-	vim.api.nvim_set_hl(0, "CmpItemKindSnippet", { fg = fgdark, bg = "#D4A959" })
-	vim.api.nvim_set_hl(0, "CmpItemKindFolder", { fg = fgdark, bg = "#D4A959" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindMethod", { fg = fgdark, bg = "#6C8ED4" })
-	vim.api.nvim_set_hl(0, "CmpItemKindValue", { fg = fgdark, bg = "#6C8ED4" })
-	vim.api.nvim_set_hl(0, "CmpItemKindEnumMember", { fg = fgdark, bg = "#6C8ED4" })
-
-	vim.api.nvim_set_hl(0, "CmpItemKindInterface", { fg = fgdark, bg = "#58B5A8" })
-	vim.api.nvim_set_hl(0, "CmpItemKindColor", { fg = fgdark, bg = "#58B5A8" })
-	vim.api.nvim_set_hl(0, "CmpItemKindTypeParameter", { fg = fgdark, bg = "#58B5A8" })
-end
-
 M.configfunc = function()
 	local lspkind = require("lspkind")
 	vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 	local cmp = require("cmp")
-	local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
+	require("luasnip.loaders.from_vscode").lazy_load()
+	local luasnip = require("luasnip")
 
-	setCompHL()
 	cmp.setup({
+		completion = {
+			completeopt = "menu,menuone,preview,noselect",
+		},
 		preselect = cmp.PreselectMode.None,
 		snippet = {
 			expand = function(args)
-				vim.fn["UltiSnips#Anon"](args.body)
+				-- vim.fn["UltiSnips#Anon"](args.body)
+				luasnip.lsp_expand(args.body)
 			end,
 		},
 		window = {
@@ -138,7 +106,8 @@ M.configfunc = function()
 		},
 		sources = cmp.config.sources({
 			{ name = "nvim_lsp" },
-			{ name = "ultisnips" },
+			{ name = "codeverse" },
+			{ name = "luasnip" },
 			{ name = "buffer" },
 			{ name = "path" },
 			{ name = "nvim_lua" },
@@ -146,18 +115,6 @@ M.configfunc = function()
 		}),
 		mapping = cmp.mapping.preset.insert({
 			['<CR>'] = cmp.mapping.confirm({ select = true }),
-			["<c-e>"] = cmp.mapping(
-				function()
-					cmp_ultisnips_mappings.compose { "expand", "jump_forwards" } (function() end)
-				end,
-				{ "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-			),
-			["<c-n>"] = cmp.mapping(
-				function(fallback)
-					cmp_ultisnips_mappings.jump_backwards(fallback)
-				end,
-				{ "i", "s", --[[ "c" (to enable the mapping in command mode) ]] }
-			),
 			['<c-f>'] = cmp.mapping({
 				i = function(fallback)
 					cmp.close()
@@ -175,29 +132,32 @@ M.configfunc = function()
 					end
 				end
 			}),
-			["<Tab>"] = cmp.mapping({
-				i = function(fallback)
+			["<Tab>"] = cmp.mapping(
+				function(fallback)
 					if cmp.visible() then
-						cmp.select_next_item({ behavior = cmp.SelectBehavior.Insert })
+						cmp.select_next_item()
+						-- You could replace the expand_or_jumpable() calls with expand_or_locally_jumpable()
+						-- they way you will only jump inside the snippet region
+					elseif luasnip.expand_or_jumpable() then
+						luasnip.expand_or_jump()
 					elseif has_words_before() then
 						cmp.complete()
 					else
 						fallback()
 					end
-				end,
-			}),
-			["<S-Tab>"] = cmp.mapping({
-				i = function(fallback)
+				end, { "i", "s" }),
+			["<S-Tab>"] = cmp.mapping(
+				function(fallback)
 					if cmp.visible() then
-						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Insert })
+						cmp.select_prev_item()
+					elseif luasnip.jumpable(-1) then
+						luasnip.jump(-1)
 					else
 						fallback()
 					end
-				end,
-			}),
+				end, { "i", "s" }),
 		}),
 	})
 end
-
 
 return M
