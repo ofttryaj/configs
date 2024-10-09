@@ -1,6 +1,9 @@
+-- recommended settings from nvim-tree documentation
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 local o = vim.o
 
-o.shell = "/bin/bash"
+o.shell = "fish"
 vim.cmd([[filetype plugin indent on]])
 o.cursorline = false
 o.number = true
@@ -67,16 +70,12 @@ o.listchars = "tab:^ ,nbsp:¬,extends:»,precedes:«,trail:•"
 o.sidescrolloff = 8
 o.updatetime = 300
 
-vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
+-- vim.opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 
 o.conceallevel = 0
 -- o.showtabline = 3
 -- o.laststatus = 3
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- o.t_Co = 256
 if vim.fn.has("nvim") == 1 then
@@ -91,6 +90,10 @@ vim.cmd([[set guioptions-=T]])
 vim.cmd([[set vb t_vb=]])
 -- vim.cmd([[call Base16hi("Comment", g:base16_gui09, "", g:base16_cterm09, "", "", "")]])
 -- vim.cmd([[call Base16hi("LspSignatureActiveParameter", g:base16_gui05, g:base16_gui03, g:base16_cterm05, g:base16_cterm03, "bold", "")]])
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 local bools = vim.api.nvim_get_hl(0, { name = 'Boolean' })
 vim.api.nvim_set_hl(0, 'Comment', bools)

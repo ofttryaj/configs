@@ -16,7 +16,7 @@ vim.keymap.set("n", "<leader>ll", ":Lazy<CR>", { noremap = true })
 
 require("lazy").setup({
 	{
-		"nvim-lua/plenary.nvim", -- lua functions that many plugins use
+		"nvim-lua/plenary.nvim",
 	},
 	require("plugins.conform"),
 	require("plugins.fzf"),
@@ -32,6 +32,13 @@ require("lazy").setup({
 	require("plugins.treesitter"),
 	require("plugins.telescope"),
 	require("plugins.indent-blankline"),
+	require("plugins.nvim-treesitter-textobjects"),
 	require("plugins.nvim-tree"),
 	require("plugins.dressing"),
+	require("plugins.flash"),
+	require("plugins.gitsigns"),
+}, {
+	change_detection = {
+		notify = false,
+	}
 })

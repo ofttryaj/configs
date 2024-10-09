@@ -9,6 +9,8 @@ return {
 		local fzf = require('fzf-lua')
 		vim.keymap.set('n', '<C-p>',
 			"<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
+		vim.keymap.set('n', '<C-\\>',
+			"<cmd>lua require('fzf-lua').buffers()<CR>", { noremap = true, silent = true })
 		vim.keymap.set('n', '<c-f>', function()
 			fzf.grep({ search = "", fzf_opts = { ['--layout'] = 'default' } })
 		end, m)

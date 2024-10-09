@@ -4,13 +4,10 @@ local F = {}
 
 M.config = {
 	{
-		'weilbith/nvim-code-action-menu',
-		cmd = 'CodeActionMenu',
-	},
-	{
 		'neovim/nvim-lspconfig',
 		dependencies = {
 			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ "antosha417/nvim-lsp-file-operations", config = true },
 			{
 				'j-hui/fidget.nvim',
 				tag = "legacy"
@@ -91,7 +88,7 @@ M.config = {
 			F.configureDocAndSignature()
 			vim.diagnostic.config({
 				severity_sort = true,
-				underline = false,
+				underline = true,
 				virtual_text = false,
 				update_in_insert = false,
 				float = true,
@@ -138,27 +135,6 @@ F.configureDocAndSignature = function()
 			zindex = 60,
 		}
 	)
-	-- local group = vim.api.nvim_create_augroup("lsp_diagnostics_hold", { clear = true })
-	-- vim.api.nvim_create_autocmd({ "CursorHold" }, {
-	-- 	pattern = "*",
-	-- 	callback = function()
-	-- 		vim.diagnostic.open_float({}, {
-	-- 			scope = "cursor",
-	-- 			focusable = false,
-	-- 			zindex = 10,
-	-- 			close_events = {
-	-- 				"CursorMoved",
-	-- 				"CursorMovedI",
-	-- 				"BufHidden",
-	-- 				"InsertCharPre",
-	-- 				"InsertEnter",
-	-- 				"WinLeave",
-	-- 				"ModeChanged",
-	-- 			},
-	-- 		})
-	-- 	end,
-	-- 	group = group,
-	-- })
 end
 
 return M

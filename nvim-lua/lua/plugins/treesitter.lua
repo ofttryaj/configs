@@ -1,8 +1,8 @@
 return {
-	"nvim-treesitter/playground",
 	{
 		"nvim-treesitter/nvim-treesitter",
 		lazy = false,
+		event = { "BufReadPre", "BufNewFile" },
 		priority = 1000,
 		build = ":TSUpdate",
 		config = function()
@@ -25,7 +25,10 @@ return {
 					"terraform",
 					"dockerfile",
 					"yaml",
+					"ninja",
 					"python",
+					"rst",
+					"toml",
 				},
 				highlight = {
 					enable = true,
@@ -37,8 +40,8 @@ return {
 				incremental_selection = {
 					enable = true,
 					keymaps = {
-						init_selection    = "<c-n>",
-						node_incremental  = "<c-n>",
+						init_selection    = "<C-s>",
+						node_incremental  = "<C-s>",
 						node_decremental  = "<bs>",
 						scope_incremental = "<c-l>",
 					},
@@ -70,4 +73,3 @@ return {
 		end
 	},
 }
-
